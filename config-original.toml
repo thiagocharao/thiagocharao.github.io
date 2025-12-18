@@ -73,10 +73,6 @@ name = "linkedin"
 url = "https://linkedin.com/in/charao"
 
 [[params.social]]
-name = "twitter"
-url = "https://twitter.com/thiagocharao"
-
-[[params.social]]
 name = "email"
 url = "mailto:thiago@charao.dev"
 
