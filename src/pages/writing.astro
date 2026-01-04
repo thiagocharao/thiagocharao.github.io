@@ -1,8 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// No articles hosted here - writing happens on DOIS and LinkedIn
-const articles: { title: string; description: string; date: string; category: string; link?: string }[] = [];
+// Fetch articles from DOIS RSS feed
+interface Article {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  link: string;
+}
+
+let articles: Article[] = [];
+
+try {
+  const response = await fetch('https://dois.one/rss.xml?author=thiago');
+  const xml = await response.text();
+  
+  // Parse RSS items
+  const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+  const items = xml.matchAll(itemRegex);
+  
+  for (const match of items) {
+    const item = match[1];
+    const title = item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>|<title>(.*?)<\/title>/)?.[1] || item.match(/<title>(.*?)<\/title>/)?.[1] || '';
+    const description = item.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>|<description>(.*?)<\/description>/)?.[1] || item.match(/<description>(.*?)<\/description>/)?.[1] || '';
+    const link = item.match(/<link>(.*?)<\/link>/)?.[1] || '';
+    const pubDate = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] || '';
+    const category = item.match(/<category>(.*?)<\/category>/)?.[1] || 'article';
+    
+    articles.push({
+      title: title.trim(),
+      description: description.trim(),
+      date: pubDate ? new Date(pubDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
+      category: category.trim(),
+      link: link.trim(),
+    });
+  }
+} catch (error) {
+  console.error('Failed to fetch DOIS RSS feed:', error);
+}
 ---
 
 <BaseLayout title="Writing" description="Articles, notes, and opinions by Thiago Charão">
@@ -13,51 +49,53 @@ const articles: { title: string; description: string; date: string; category: st
           Writing
         </h1>
         <p class="text-lg text-gray-600 dark:text-gray-400">
-          Articles, notes, and opinions on engineering, AI, and building software.
+          Articles, notes, and opinions on engineering, AI, and building software. 
+          Published on <a href="https://dois.one" target="_blank" rel="noopener" class="font-sora font-bold text-blue-600 dark:text-accent hover:underline">DOIS</a>.
         </p>
       </div>
 
-      <!-- Categories -->
-      <div class="flex flex-wrap gap-3 mb-12">
-        <button class="px-4 py-2 text-sm font-medium text-white bg-accent rounded-lg">All</button>
-        <button class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Articles</button>
-        <button class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Opinions</button>
-        <button class="px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">Notes</button>
-      </div>
-
       <!-- Articles list -->
-      <div class="space-y-1">
-        {articles.map((article) => (
-          <a 
-            href={article.link || '#'}
-            target={article.link?.startsWith('http') ? '_blank' : undefined}
-            rel={article.link?.startsWith('http') ? 'noopener' : undefined}
-            class="block py-5 border-b border-gray-200 dark:border-gray-800 group"
-          >
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-              <div>
-                <h2 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors">
-                  {article.title}
-                </h2>
-                <p class="text-gray-500 dark:text-gray-400 mt-1">
-                  {article.description}
-                </p>
+      {articles.length > 0 ? (
+        <div class="space-y-1">
+          {articles.map((article) => (
+            <a 
+              href={article.link}
+              target="_blank"
+              rel="noopener"
+              class="block py-5 border-b border-gray-200 dark:border-gray-800 group"
+            >
+              <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
+                <div>
+                  <h2 class="text-lg font-medium text-gray-900 dark:text-white group-hover:text-accent transition-colors inline-flex items-center gap-2">
+                    {article.title}
+                    <svg class="w-3.5 h-3.5 text-gray-400 group-hover:text-accent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                    </svg>
+                  </h2>
+                  <p class="text-gray-500 dark:text-gray-400 mt-1">
+                    {article.description}
+                  </p>
+                </div>
+                <div class="flex items-center gap-3 text-sm text-gray-400 dark:text-gray-500 whitespace-nowrap">
+                  <span class="font-sora text-xs">DOIS</span>
+                  <span>·</span>
+                  <span>{article.date}</span>
+                </div>
               </div>
-              <div class="flex items-center gap-3 text-sm text-gray-400 dark:text-gray-500 whitespace-nowrap">
-                <span>{article.category}</span>
-                <span>·</span>
-                <span>{article.date}</span>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-gray-500 dark:text-gray-400 py-8 text-center">
+          Articles coming soon. Check out <a href="https://dois.one" target="_blank" rel="noopener" class="font-sora font-bold text-blue-600 dark:text-accent hover:underline">DOIS</a> in the meantime.
+        </p>
+      )}
 
-      <!-- DOIS callout -->
+      <!-- About DOIS -->
       <div class="mt-16 p-8 rounded-xl bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
         <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-          Most of my recent writing is on <a href="https://dois.one" target="_blank" rel="noopener" class="font-sora font-bold text-blue-600 dark:text-accent hover:underline">DOIS</a>, 
-          a project I run with Andreos where we share experiments, notes, and opinions on engineering and AI.
+          <a href="https://dois.one" target="_blank" rel="noopener" class="font-sora font-bold text-blue-600 dark:text-accent hover:underline">DOIS</a> is 
+          a project I run with Andreos where we share experiments and opinions on engineering and AI.
         </p>
         <a 
           href="https://dois.one" 
@@ -75,7 +113,7 @@ const articles: { title: string; description: string; date: string; category: st
       <!-- LinkedIn callout -->
       <div class="mt-6 p-8 rounded-xl bg-gray-100 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
         <p class="text-lg text-gray-700 dark:text-gray-300 mb-4">
-          I also post regularly on <a href="https://linkedin.com/in/charao" target="_blank" rel="noopener" class="text-blue-600 dark:text-accent hover:underline font-medium">LinkedIn</a> — shorter takes on AI, engineering leadership, and what I'm working on.
+          I also post on <a href="https://linkedin.com/in/charao" target="_blank" rel="noopener" class="text-blue-600 dark:text-accent hover:underline font-medium">LinkedIn</a> — shorter takes on AI, engineering leadership, and what I'm working on.
         </p>
         <a 
           href="https://linkedin.com/in/charao" 
