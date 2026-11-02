@@ -6,9 +6,15 @@
 <meta name="theme-color" content="#0f141a">
 <title>I Left My Feet in San Francisco</title>
 <link rel="canonical" href="https://charao.dev/side-quests/san-francisco/">
+<link rel="alternate" hreflang="en" href="https://charao.dev/side-quests/san-francisco/">
+<link rel="alternate" hreflang="pt-BR" href="https://charao.dev/side-quests/san-francisco/pt-br/">
+<link rel="alternate" hreflang="pt-PT" href="https://charao.dev/side-quests/san-francisco/pt-pt/">
+<link rel="alternate" hreflang="x-default" href="https://charao.dev/side-quests/san-francisco/">
+
 <meta name="description" content="One week in San Francisco for GitHub Universe 2026, told in first person: 102,837 steps, four burgers, a foul ball, a bridge I had to go back and say goodbye to.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I Left My Feet in San Francisco">
+<meta property="og:locale" content="en_US">
 <meta property="og:description" content="One week, one 10 kg carry-on, four burgers, a foul ball, and a bridge I had to go back and say goodbye to.">
 <meta property="og:url" content="https://charao.dev/side-quests/san-francisco/">
 <meta property="og:image" content="https://charao.dev/side-quests/san-francisco/img/poster-illustrated.jpg">
@@ -68,8 +74,8 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02;
 
 /* language toggle */
 .langbar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(12px,env(safe-area-inset-right,0px));z-index:20;display:flex;gap:4px;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:999px;padding:4px;box-shadow:var(--shadow)}
-.langbar button{appearance:none;border:0;background:transparent;color:var(--fg);font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.06em;padding:6px 10px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:6px;line-height:1}
-.langbar button[aria-pressed="true"]{background:var(--orange);color:#fff}
+.langbar a{text-decoration:none;appearance:none;border:0;background:transparent;color:var(--fg);font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.06em;padding:6px 10px;border-radius:999px;cursor:pointer;display:flex;align-items:center;gap:6px;line-height:1}
+.langbar a[aria-current="page"]{background:var(--orange);color:#fff}
 .langbar .flag{font-size:1.05rem;line-height:1}
 
 /* image loader */
@@ -111,7 +117,7 @@ h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.02;
 /* day nav */
 .daynav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);
   border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-block:10px 0}
-.daynav ul{list-style:none;margin:0 auto;padding:0 140px 0 0;scroll-padding-inline:0 140px;max-width:1100px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.daynav ul{list-style:none;margin:0 auto;padding:0 200px 0 0;scroll-padding-inline:0 200px;max-width:1100px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .daynav li{flex:0 0 auto}
 .daynav a{display:block;padding:12px 14px;font-family:var(--display);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--fg)}
 .daynav a span{color:var(--orange);margin-right:6px}
@@ -230,11 +236,11 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
 
 </head>
 <body>
-<div class="langbar" role="group" aria-label="Language">
-  <button type="button" id="lang-en" aria-pressed="true" onclick="setLang('en')"><span class="flag" aria-hidden="true">🇺🇸</span>EN</button>
-  <button type="button" id="lang-pt" aria-pressed="false" onclick="setLang('pt')"><span class="flag" aria-hidden="true">🇧🇷</span>PT</button>
+<div class="langbar" role="navigation" aria-label="Language">
+  <a href="" aria-current="page" hreflang="en" lang="en"><span class="flag" aria-hidden="true">🇺🇸</span>EN</a>
+  <a href="pt-br/" hreflang="pt-BR" lang="pt-BR"><span class="flag" aria-hidden="true">🇧🇷</span>PT-BR</a>
+  <a href="pt-pt/" hreflang="pt-PT" lang="pt-PT"><span class="flag" aria-hidden="true">🇵🇹</span>PT-PT</a>
 </div>
-<div id="body-en" data-lang="en">
 <!-- COVER -->
 <section class="cover">
   <div class="cover-art">
@@ -253,8 +259,8 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
 <section class="wrap intro">
   <div class="prose">
     <p class="lede">San Francisco had been on my list since I was a kid, long before I knew what a Clipper card was. It got there the way most 90s dreams did, through a television in Brazil: Dinosaurs, Full House, and every California film that came after, plus a side dream of studying at Stanford that never happened and never quite went away. The trip finally happened the way these things do: an invitation to a conference that turned up in my inbox, a visa that lived in the wrong passport, a €642 fare that left at five in the morning, and a wife who drafted the first itinerary before I had finished saying yes.</p>
-    <p>This is the week as it actually went, pieced together from the messages I sent to Claude, who rode along in my pocket, from the gym, the bridge, the ferry, a cable car stop I could not work out, a steakhouse that would not let me in, a basketball arena that would not let my bag in, and a steakhouse that would. Planned things get crossed out. Real things get photos. My own typos stay in, because they are evidence.</p>
-    <p class="hand">Photos by my phone. Spelling by my thumbs. Timeline by my credit card, which remembered things I did not. Patience by Claude.</p>
+    <p>This is the week as it actually went, pieced together from the messages I sent to my travel assistant, a Claude agent that rode along in my pocket, from the gym, the bridge, the ferry, a cable car stop I could not work out, a steakhouse that would not let me in, a basketball arena that would not let my bag in, and a steakhouse that would. Planned things get crossed out. Real things get photos. My own typos stay in, because they are evidence.</p>
+    <p class="hand">Photos by my phone. Spelling by my thumbs. Timeline by my credit card, which remembered things I did not. Patience by the travel assistant.</p>
   </div>
   <aside class="cast">
     <h3>Cast</h3>
@@ -264,7 +270,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
       <dt>Whisky</dt><dd>Our dog. Had a boutique on Union St on the list. Got nothing. Sorry, Whisky.</dd>
       <dt>Max</dt><dd>Sent the invitation that started it all.</dd>
       <dt>Rahul</dt><dd>Friend made on Wednesday. Believes I will attend Stanford one day.</dd>
-      <dt>Claude</dt><dd>In my pocket all week. Spent one afternoon driving the wrong Mac.</dd>
+      <dt>Travel assistant</dt><dd>A Claude agent. In my pocket all week. Spent one afternoon driving the wrong Mac.</dd>
       <dt>My feet</dt><dd>Supporting role. Filed one formal complaint on Tuesday.</dd>
     </dl>
   </aside>
@@ -296,15 +302,15 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
 <section class="wrap chapter" id="before">
   <header>
     <div class="daynum"><small>Prologue</small>0</div>
-    <div><h2>Two passports, one visa, and the wrong Mac</h2><p class="dek">In which I book the trip in a weekend, Claude drives the wrong computer, and nobody can buy the workshop with one seat left.</p></div>
+    <div><h2>Two passports, one visa, and the wrong Mac</h2><p class="dek">In which I book the trip in a weekend, the travel assistant drives the wrong computer, and nobody can buy the workshop with one seat left.</p></div>
   </header>
   <div class="grid">
     <div class="prose">
       <p>It started with an email. The conference pass was waived thanks to Max, which I reported with the enthusiasm of a man who has just saved $1,399: "got the invite finally, so I don't pay for it." The visa was fine. The visa was also in my old passport, which meant travelling with both passports in the same pocket for the rest of the week, a line that would appear in every checklist from then on.</p>
-      <p>The flight was a €642 TAP fare leaving Porto at 05:00, which Claude described as brutal for most people but fine for someone who lives ten minutes from the airport. The fare was the Discount kind: carry-on only, ten kilos. Remember the ten kilos.</p>
+      <p>The flight was a €642 TAP fare leaving Porto at 05:00, which the travel assistant described as brutal for most people but fine for someone who lives ten minutes from the airport. The fare was the Discount kind: carry-on only, ten kilos. Remember the ten kilos.</p>
       <p>Clarissa drafted the first itinerary in her own chat. Alcatraz turned out to be closed for the exact week. The Warriors were playing the Lakers on the Friday. Section 222, row 8, seat 11.</p>
-      <p>Then came the Saturday before departure, when I asked Claude to log in to the conference portal and book my sessions. The browser pane stayed blank. I switched settings. I switched browsers. I typed a sentence that should be framed. Claude, it turned out, had been faithfully opening browsers on the Mac Studio in the other room while I sat at the MacBook. Once the right computer was found, 18 sessions were booked in ten minutes.</p>
-      <p>The one thing that could never be booked was the AI credits workshop, which showed "1 of 30 seats left" every single time Claude checked, five times across the week, like a fruit machine that only ever shows two cherries.</p>
+      <p>Then came the Saturday before departure, when I asked the travel assistant to log in to the conference portal and book my sessions. The browser pane stayed blank. I switched settings. I switched browsers. I typed a sentence that should be framed. The assistant, it turned out, had been faithfully opening browsers on the Mac Studio in the other room while I sat at the MacBook. Once the right computer was found, 18 sessions were booked in ten minutes.</p>
+      <p>The one thing that could never be booked was the AI credits workshop, which showed "1 of 30 seats left" every single time the assistant checked, five times across the week, like a fruit machine that only ever shows two cherries.</p>
     </div>
     <div>
       <div class="chat">
@@ -319,7 +325,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
         <div class="msg me">this is stupid!!! can't you operate spotify on my laptop and avoid spotify choosing stuff?</div>
       </div>
       <div class="photos">
-        <figure class="ph" style="--r:-2deg"><img src="img/itinerary-print.jpg" alt="A printed week plan on hotel paper, with a hand resting on it."><figcaption>The plan, printed, because Claude does not work at 11,000 metres.</figcaption></figure>
+        <figure class="ph" style="--r:-2deg"><img src="img/itinerary-print.jpg" alt="A printed week plan on hotel paper, with a hand resting on it."><figcaption>The plan, printed, because the travel assistant does not work at 11,000 metres.</figcaption></figure>
         <figure class="ph" style="--r:1.5deg;--ar:9/16"><img src="img/clipper.jpg" alt="Clipper transit card in Apple Wallet with 25 dollars loaded."><figcaption>Clipper. Loaded, finally understood, tapped on everything with wheels.</figcaption></figure>
       </div>
     </div>
@@ -344,7 +350,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
   <div class="grid">
     <div class="prose">
       <p>I went to bed at seven the night before and left the house at ten past three, with a plan to train every morning in San Francisco. Hold that thought. In Lisbon I landed, walked confidently out through arrivals, and sent a message in Portuguese asking whether I should now go to Terminal 2. I should not. I went back in.</p>
-      <p>Somewhere over the Atlantic, Claude rebuilt my Google Maps lists from the 402 places I have saved around Portugal, which is how it learned that I like smash burgers, picanha, francesinha, specialty coffee and cocktail bars you need to be told about. It also tried to book House of Prime Rib. House of Prime Rib does not take online bookings for one. Note this. It will come back.</p>
+      <p>Somewhere over the Atlantic, the travel assistant rebuilt my Google Maps lists from the 402 places I have saved around Portugal, which is how it learned that I like smash burgers, picanha, francesinha, specialty coffee and cocktail bars you need to be told about. It also tried to book House of Prime Rib. House of Prime Rib does not take online bookings for one. Note this. It will come back.</p>
       <p>My first message from American soil was not "I landed." It was "best burgers in sf!" The hotel had read the email about the noisy road and given me a quiet room. They asked if I wanted full housekeeping or just towels. I went with full service, like a man on holiday.</p>
       <p>I treated the jet lag the correct way: a walk in the last of the light to the Palace of Fine Arts, where the rotunda was lit and doubled in the lagoon, then a burger at Super Duper on Chestnut, then, according to my card, two rounds at Sully's on Chestnut at $15.38 each, which is where the Negroni count quietly started. Bed at 21:46. My wrist tracker gave the night an 87 percent and said nothing about the burger. It would have plenty to say later.</p>
     </div>
@@ -389,9 +395,9 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
     <div class="prose">
       <p>The day began at a gym inside a former Moorish cinema on Polk Street, because of course it did. Day pass, $35, session ran long. This was the first of the daily training sessions I had promised myself. It was also the last. The wrist tracker logged the day at a strain of 18.0 and 29,918 steps, which is what happens when you follow a gym session with a bridge, and my body quietly cancelled the rest of the programme on my behalf. From there I walked up to Lombard, looked down the crooked block, walked down the crooked block, and stopped at Lucca on Chestnut for a roast beef sandwich I described as breakfast, then at Twisted St. Cafe for the coffee I had been hunting since 06:22.</p>
       <p>Then the bridge. I asked whether the bus went "through the water" like I would have walked, which is a fair question about a bus. It went through the Presidio instead. The day was clear, no fog, the Marin hills sharp behind the towers, and at 11:31 I sent two words: "starting to cross now."</p>
-      <p>At the far end the plan had me walking up to Battery Spencer for the photo and then down into Sausalito for the 13:35 ferry. The plan had not met my feet. A Lyft was summoned to a road my phone insisted on calling Con Woman Rd, stopped at the battery long enough for the full-length photo with the bridge behind me, and dropped me at the ferry with time to buy a drink. At 12:52 I filed the complaint: "my feet are killing me now 😅". Claude pointed out that it was the gym plus ten kilometres. This did not help.</p>
+      <p>At the far end the plan had me walking up to Battery Spencer for the photo and then down into Sausalito for the 13:35 ferry. The plan had not met my feet. A Lyft was summoned to a road my phone insisted on calling Con Woman Rd, stopped at the battery long enough for the full-length photo with the bridge behind me, and dropped me at the ferry with time to buy a drink. At 12:52 I filed the complaint: "my feet are killing me now 😅". The assistant pointed out that it was the gym plus ten kilometres. This did not help.</p>
       <p>On the ferry I made two decisions. I would skip the customer reception that evening, the invitation-only event my pass had been built around, because I wanted more San Francisco. And I would have a proper lunch. The proper lunch was a burger at Gott's at the Ferry Building. Then, with no warning, "ha got waymo for the first time." I filmed it pulling up to the kerb like a nervous dad, then filmed the steering wheel turning on its own, and a car with nobody in the front took me to Coit Tower, where the card shows three separate visits to the gift shop in 22 minutes, which is what indecision costs: $4.60, $11 and $7.99.</p>
-      <p>Washington Square, then Caffe Trieste, the old North Beach espresso bar Claude had recommended, which is classic in every way including the one where it only takes cash. The ATM was at least inside. $23.50 withdrawn for a coffee and a pastry. Then Powell Street, where the cable car defeated me. "can't figure how to hop in the tram thingy." You wave at it, it turns out. I waved. Nine dollars, down Hyde Street with Alcatraz in the windscreen, to the end of the line at the water.</p>
+      <p>Washington Square, then Caffe Trieste, the old North Beach espresso bar the assistant had recommended, which is classic in every way including the one where it only takes cash. The ATM was at least inside. $23.50 withdrawn for a coffee and a pastry. Then Powell Street, where the cable car defeated me. "can't figure how to hop in the tram thingy." You wave at it, it turns out. I waved. Nine dollars, down Hyde Street with Alcatraz in the windscreen, to the end of the line at the water.</p>
       <p>Badge collected, one drink at a crafthouse by the water, Negroni count rising. Then the quest. House of Prime Rib refused me two nights running. Monday I walked in and was told an hour and a half. Tuesday I walked in earlier, asked for a bar stool, and learned that a bar stool does not exist for a party of one on a Tuesday. Same hour and a half. "no go." Four minutes from the hotel, with no sign outside, The Brazen Head had a ten ounce prime rib on the menu, limited availability. I got it, with a loaded potato and a green salad with creamy Italian. Then: "got a negroni." The quest was over. It had taken one day.</p>
     </div>
     <div>
@@ -449,7 +455,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
   </ol>
   <div class="grid">
     <div class="prose">
-      <p>Breakfast was Home Plate, one block from the hotel. Claude pushed the crab omelette with some force. What I ordered is lost to history, which tells you everything.</p>
+      <p>Breakfast was Home Plate, one block from the hotel. The travel assistant pushed the crab omelette with some force. What I ordered is lost to history, which tells you everything.</p>
       <p>At Fort Mason the flags were up, the arch was glowing, and the catering had built towers of doughnuts under a screen that said "hitting new bottlenecks". The daily training plan was already a memory. I had a seat in a hands-on sandbox session that required queueing 30 minutes early. I skipped it for two sessions on agentic engineering, standby only, no seat guaranteed, and got in. At 11:00: "i'm on agentic one. amazing so far what's next?" The rest of the day was main stage, model routers, agents with credentials, and a slide from AMD and ING asking whether any of this is actually paying off, which is the question I get asked at work every week.</p>
       <p>The useful discovery of the day, repeated over the next two: everyone in the building was fighting the same fights I fight. The pressure comes from the top for everyone. Nothing we are doing at Planet sounded strange to anyone. I would put this on LinkedIn the next day, after a joke about my suitcase. The card also shows a Logitech purchase at 12:48, which nobody remembers deciding, and a stop at Ghirardelli Square on the way to dinner, which everybody remembers.</p>
       <p>Dinner was The Bird, a fried chicken sandwich counter in SoMa with the World Series on the screen. "made a friend at the event." The friend has a name, Rahul, and by Friday night he was texting from the game: "so competitive." It was a good night.</p>
@@ -548,7 +554,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
     <div class="prose">
       <p>The day's first question, sent from a coffee shop while a Lyft was being cancelled on me, was about the backpack. Chase Center does not allow backpacks. I had a small one. This fact would occupy roughly a fifth of the day's messages.</p>
       <p>Caltrain 118, track 9, tap on with Clipper. "which stop do I get off? next is south SF." Palo Alto, after Menlo Park. I walked Palm Drive up to the Stanford quad, the campus a kid in Brazil had decided to study at and never did, stood in it for an hour, found the HP Garage, which is a garage behind a house on a quiet street where people live, took my photos from the far pavement at the pace of someone expecting a patrol car, and sat down at Local Union 271 on University Avenue for a half-pound duck fat burger, my third burger of the week, at which point I looked at photos of the Computer History Museum I had planned for three weeks and sent the most honest message of the trip: "i'll be honest… looked the pics of the museum… not really my thing." Back to the city, then.</p>
-      <p>At the Giants Dugout Store there was a case of authenticated game-used baseballs and no idea which one to buy. "figure for me." Claude chose B-5, Bradley to Cox, Foul Ball, 22 September, Giants batting in the bottom of the fifth. "foul ball?" I replied. A short lesson in baseball followed. I bought it. I looked at the wall of jerseys, considered a Willie Mays 24, and left it there. Clarissa's present would come from the Warriors shop instead, where the card says a number I will describe as $$$, and from the Stanford Bookstore earlier, which was also $$$. The ten kilos were starting to look optimistic.</p>
+      <p>At the Giants Dugout Store there was a case of authenticated game-used baseballs and no idea which one to buy. "figure for me." The assistant chose B-5, Bradley to Cox, Foul Ball, 22 September, Giants batting in the bottom of the fifth. "foul ball?" I replied. A short lesson in baseball followed. I bought it. I looked at the wall of jerseys, considered a Willie Mays 24, and left it there. Clarissa's present would come from the Warriors shop instead, where the card says a number I will describe as $$$, and from the Stanford Bookstore earlier, which was also $$$. The ten kilos were starting to look optimistic.</p>
       <p>The bag. My backpack was "very small," "like a sack," photographed next to my hand for scale. It had straps and a front pocket, so no. Could I get in with a Warriors shopping bag? Maybe. Then the revelation: the backpack folds into its own pocket. In the end I paid the $10 anyway, dropped everything at the bag check, and walked back in a retro "The City" Warriors jacket and a new cap with the size sticker still on the brim. Then, having been told at 16:41 that I had already had a burger that day and should try the brisket, I went to Gott's at 16:44. Burger number four. The card does not lie.</p>
       <p>Warriors versus Lakers, section 222, row 8, a selfie taken before the seats filled. I sent no messages during the game, which is the correct way to attend one. The photos tell it instead: 78 all late in the third, then Warriors 101 to 86 with six minutes left, and a board announcing that Curry's 26th point had just moved him past Dominique Wilkins to 18th on the all-time scoring list. I was in the building for that. Final score 112 to 95, Curry 31 points and eight threes, after a first quarter the Lakers won 38 to 15 and a second quarter the Warriors won 38 to 15, which is the kind of symmetry you only get at your first game. The Warriors then emailed me a recap of the wrong game. At 22:05 the only update was "no go here": no cars outside the arena. I walked fifteen minutes up Fourth Street to the ballpark and found one there. It was an Uber. Lyft had cancelled on me once that day already and I hold grudges.</p>
     </div>
@@ -610,7 +616,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
     <div class="prose">
       <p>At 06:53 the ten kilos came due. Swag, a baseball in a cube, a satin jacket, a cap, Clarissa's Warriors things, Stanford things. "I hope I can manage thatZ." I managed it, the Z included.</p>
       <p>The plan for the morning was the Ferry Plaza Farmers Market. I had already been. The alternative was the ocean end of the city, Lands End and the Sutro Baths. I had a coffee at Twisted instead, took the bus to Crissy Field with Clipper, which I now understood, bought $7 of postcards at the Warming Hut, and did the thing the whole week had been pointing at: I went back to the bridge. "came back to the bridge to say bye 🤗🤗." The photo, from the bluff above Fort Point with the clouds breaking over Marin, is the best one of the trip, and I took it with my phone, having left the real camera at home to save weight.</p>
-      <p>Lunch was always going to be a steak. A steakhouse on the Embarcadero was booked, then cancelled for something more San Francisco: Original Joe's in North Beach, red booths, open grill, Italian-American since 1937. Claude suggested the ribeye, medium-rare, green peppercorn sauce, house ravioli on the side. My report back: "got with fries and a salad with ranch on the side." Which is the correct American order, and the week in one sentence. The photos later revealed what the message left out: another Negroni next to the plate, and a bowl of warm sugared doughnuts with chocolate and raspberry to finish. I had packed to ten kilos that morning. The doughnuts did not count.</p>
+      <p>Lunch was always going to be a steak. A steakhouse on the Embarcadero was booked, then cancelled for something more San Francisco: Original Joe's in North Beach, red booths, open grill, Italian-American since 1937. The assistant suggested the ribeye, medium-rare, green peppercorn sauce, house ravioli on the side. My report back: "got with fries and a salad with ranch on the side." Which is the correct American order, and the week in one sentence. The photos later revealed what the message left out: another Negroni next to the plate, and a bowl of warm sugared doughnuts with chocolate and raspberry to finish. I had packed to ten kilos that morning. The doughnuts did not count.</p>
       <p>At the airport my new Revolut lounge pass, the one that made me "fancy now 😂😂", was turned away by two lounges in a row, one of them "for flight attendants only", before China Airlines took pity on me. The lounge was fine. The people in it were pretentious. I had the food and left. And then, at the gate, Halloween. The gate staff boarded us dressed as the nun from the horror films: one waving at the window and posing for everyone, another standing in the jet bridge in full habit, with glasses and a beard, checking boarding passes with great seriousness. The last photo I took in America is a demon nun waving goodbye. San Francisco knows how to end a week.</p>
       <p>The Lyft to the airport cost, to the cent, what the Lyft from the airport had cost six days earlier. The city balanced its books. Then twelve hours to Lisbon, both passports in the same pocket, and a second lounge in Lisbon on Sunday morning, where the people were no less pretentious and the food was no less free. The clocks in America went back that night. Mine had already gone back a week earlier. For six days I had been seven hours away from home instead of eight, and I had used every one of them. The step counter says so: 102,837 steps, roughly 75 kilometres on foot, on legs that filed a formal complaint on day two.</p>
     </div>
@@ -635,7 +641,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
     <figure class="ph" style="--r:-1deg"><img src="img/waymo-dog.jpg" alt="A white fluffy dog looking out of the tinted rear window of a pale blue Waymo."><figcaption>On the way to lunch, a dog in the next Waymo, staring. Nobody driving either car.</figcaption></figure>
     <figure class="ph" style="--r:1.5deg;--ar:3/4"><video src="vid/waymo.mp4" poster="vid/waymo-poster.jpg" autoplay muted loop playsinline aria-label="Inside the Saturday Waymo, the steering wheel turning on its own."></video><figcaption>Waymo no. 2, hotel to lunch, $8.78. Old hat by now.</figcaption></figure>
     <figure class="ph" style="--r:2deg;--ar:4/3"><img src="img/joes-salad.jpg" alt="A chopped salad with salami on a round black table in a green leather booth at Original Joe's, a Negroni behind it."><figcaption>Original Joe's, 11:20. Salad, ranch on the side, Negroni not on the side.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:16/9"><img src="img/joes-ribeye.jpg" alt="A grilled ribeye with rosemary and a pile of thin fries on a white plate, a Negroni and a glass of water behind."><figcaption>Ribeye, 16 oz, fries. The order Claude did not suggest and the one I was always going to have.</figcaption></figure>
+    <figure class="ph wide" style="--r:-1deg;--ar:16/9"><img src="img/joes-ribeye.jpg" alt="A grilled ribeye with rosemary and a pile of thin fries on a white plate, a Negroni and a glass of water behind."><figcaption>Ribeye, 16 oz, fries. The order the assistant did not suggest and the one I was always going to have.</figcaption></figure>
     <figure class="ph" style="--r:1.5deg"><img src="img/joes-doughnuts.jpg" alt="Three sugared Italian doughnuts in a silver cup with chocolate and raspberry sauces."><figcaption>Dessert, unannounced. The ten kilos were a suitcase rule, not a lunch rule.</figcaption></figure>
     <figure class="ph" style="--r:2deg"><img src="img/joes-menu.jpg" alt="The Steaks and Chops page of the Original Joe's menu, with a 16 oz ribeye and a tomahawk for two."><figcaption>The last menu photo of the week.</figcaption></figure>
     <figure class="ph" style="--r:-1.5deg"><img src="img/nun-wave.jpg" alt="A TAP staff member at the gate in a nun's habit and a pale horror-film mask, waving at the camera."><figcaption>Boarding, Halloween edition. She waved first.</figcaption></figure>
@@ -653,13 +659,13 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
     <div class="tile"><div class="n">4</div><div class="l">Burgers</div><div class="s">Super Duper, Gott's, Local Union, Gott's again. Plus Shake Shack, against advice, and The Bird twice.</div></div>
     <div class="tile"><div class="n">2</div><div class="l">Steaks</div><div class="s">Prime rib on Tuesday, ribeye on Saturday. House of Prime Rib: 0.</div></div>
     <div class="tile"><div class="n">5<span style="font-size:.45em;color:var(--muted)">+</span></div><div class="l">Negronis</div><div class="s">Two at Sully's on Monday, one by the water on Tuesday, one at the Brazen Head, one at Joe's. Official count: lost.</div></div>
-    <div class="tile"><div class="n">1</div><div class="l">Feet complaint</div><div class="s">Formal, at 12:52 on Tuesday. Referenced by Claude five more times.</div></div>
+    <div class="tile"><div class="n">1</div><div class="l">Feet complaint</div><div class="s">Formal, at 12:52 on Tuesday. Referenced by the assistant five more times.</div></div>
     <div class="tile"><div class="n">18</div><div class="l">Sessions booked</div><div class="s">Attended several. Skipped one on purpose. Gave away a seat with a queue.</div></div>
     <div class="tile"><div class="n">5</div><div class="l">Workshop checks</div><div class="s">"1 of 30 seats left" every time. Seats bought: 0.</div></div>
     <div class="tile"><div class="n">2</div><div class="l">Passports</div><div class="s">Same pocket, all week. Named in every checklist.</div></div>
     <div class="tile"><div class="n">10</div><div class="l">Kilos allowed</div><div class="s">One suitcase. Swag, baseball, jacket, cap, presents. Outcome: "managed thatZ".</div></div>
     <div class="tile"><div class="n">9</div><div class="l">Maps lists</div><div class="s">About 115 places saved. About 9 eaten at. A healthy ratio.</div></div>
-    <div class="tile"><div class="n">2</div><div class="l">Computers</div><div class="s">Claude drove the wrong one for an hour. "which computer are you in?"</div></div>
+    <div class="tile"><div class="n">2</div><div class="l">Computers</div><div class="s">The assistant drove the wrong one for an hour. "which computer are you in?"</div></div>
     <div class="tile"><div class="n">1</div><div class="l">Lyft cancelled</div><div class="s">Friday morning. Plus one "no go here" after the game.</div></div>
     <div class="tile"><div class="n">0</div><div class="l">Foggy days</div><div class="s">San Francisco behaved. Tuesday was clear from end to end.</div></div>
     <div class="tile"><div class="n">37</div><div class="l">Calendar events</div><div class="s">Put in the Family calendar so Clarissa could follow along from Portugal.</div></div>
@@ -690,7 +696,7 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
 
   <div class="eyebrow" style="margin-top:48px">Recommendations vs reality</div>
   <div class="vs">
-    <div class="them"><h3>Claude suggested</h3>
+    <div class="them"><h3>The assistant suggested</h3>
       <ul><li>The crab omelette at Home Plate</li><li>Cioppino at Sotto Mare</li><li>A stool at Swan Oyster Depot</li><li>Brisket at Fikscue, not a fourth burger</li><li>Not Shake Shack</li><li>Ribeye with green peppercorn and house ravioli</li><li>Lands End and the Sutro Baths</li><li>The Computer History Museum, for three weeks</li></ul></div>
     <div class="me"><h3>I had</h3>
       <ul><li>A roast beef sandwich for breakfast</li><li>Three burgers</li><li>Prime rib with a loaded potato</li><li>A fried chicken sandwich with the World Series on, then the same sandwich the next night</li><li>Shake Shack, after being told not to</li><li>Ribeye with fries, a salad with ranch, a Negroni and doughnuts</li><li>Coffee, then the bridge again</li><li>"not really my thing"</li></ul></div>
@@ -733,549 +739,21 @@ footer{border-top:1px solid var(--line);padding-block:26px 40px;font-size:.9rem;
       <p>The conference was good. I learned that everyone has the same problems, which is the most reassuring thing a conference can teach you, and I said so in public. But the week was the other thing: the city a kid in Brazil had decided, somewhere between Dinosaurs and Full House, to see one day, seen on foot, by ferry, by robot taxi and by a cable car I had to be told to wave at.</p>
       <p>I skipped the reception for more of it. I skipped the museum for more of it. On the last morning, with a packed bag and a steak reservation, I went back up the hill above Fort Point to look at the bridge one more time and say bye, with two hugging emoji, like you would to a person.</p>
       <p class="hand orange">Next time: the camera comes, the feet get a day off, and Stanford gets an application.</p>
+      <h3 style="margin-top:28px">Sunday, 07:48. Christmas.</h3>
+      <p>The ten kilos were unpacked onto the dining table the next morning, and the dining table did not have room. Two caps. Two baseballs, one in its little case. A Pac-Man game, a pouch of Big League Chew, a mug from Mo's, a bear, a GitHub tote, a Warriors shirt and a Giants one, a pile of conference T-shirts, and a Logitech box the credit card had flagged on Wednesday and nobody had mentioned since. Mystery solved. Clarissa got the Warriors gear and the Stanford gear. Whisky got a sniff of everything.</p>
       <div class="aside" style="margin-top:22px"><h3>Editor's note</h3><p>The first version of this page was written in the third person, as if a small documentary crew had followed me around eating burgers. It went out to a test audience of two friends. Reviewer one called it "annoyingly good" and "a bit strange", then announced plans to steal ideas from it for a blog, which I am choosing to read as five stars. Reviewer two skipped the "good" and went straight to the "strange". Both were right. It was rewritten in the first person somewhere over Greenland, at 4h40 of sleep and 35% quality. The typos were already mine.</p></div>
     </div>
     <figure class="ph" style="--r:1.5deg;max-width:380px;justify-self:center"><img src="img/battery-spencer-2.jpg" alt="Me standing on the Battery Spencer headland with the Golden Gate Bridge and the city behind."><figcaption>Dream since the 90s. Done.</figcaption></figure>
   </div>
+  <figure class="ph wide" style="--r:-1deg;--ar:3/4;max-width:720px;margin:28px auto 0"><img src="img/loot-sunday.jpg" alt="A dining table and two chairs covered in caps, baseballs, a Pac-Man box, a mug, a bear, T-shirts, jerseys and a GitHub tote bag."><figcaption>Sunday morning at home. Ten kilos, allegedly. The Logitech box, bottom centre, finally explaining itself.</figcaption></figure>
 </section>
 
 <footer class="wrap">
-  <span>San Francisco, 26 to 31 October 2026. Written from a week of messages, with Claude.</span>
+  <span>San Francisco, 26 to 31 October 2026. Written from a week of messages, with a travel assistant built on Claude.</span>
   <span>Photos: my phone. Map: Claude Design. Feet: recovering.</span>
 </footer>
 
-</div>
-<div id="body-pt" data-lang="pt" hidden>
-<!-- COVER -->
-<section class="cover">
-  <div class="cover-art">
-    <img src="img/bridge-welcome.jpg" alt="A ponte Golden Gate num dia limpo, vista do Welcome Center, com as colinas de Marin ao fundo." fetchpriority="high">
-    <div class="sticker">sonho<br>desde os<br>anos 90</div>
-    <div class="cover-text">
-      <div class="eyebrow">San Francisco, 26 a 31 de outubro de 2026</div>
-      <h1>Deixei Meus Pés em San Francisco</h1>
-      <p class="cover-sub">Uma semana, uma mala de mão de 10 kg, quatro hambúrgueres, uma bola de beisebol, um presente pra Clarissa da loja dos Warriors, e uma ponte da qual eu tive que voltar pra me despedir.</p>
-      <div class="cover-meta"><span>Porto → Lisboa → SFO</span><span>GitHub Universe '26</span><span>Hotel na Lombard St</span><span>Warriors x Lakers</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- INTRO -->
-<section class="wrap intro">
-  <div class="prose">
-    <p class="lede">San Francisco estava na minha lista desde criança, muito antes de eu saber o que era um cartão Clipper. Entrou lá do jeito que a maioria dos sonhos dos anos 90 entrava, pela televisão, no Brasil: Família Dinossauro, Três É Demais, e todo filme da Califórnia que veio depois, mais um sonho paralelo de estudar em Stanford que nunca aconteceu e nunca foi embora de vez. A viagem finalmente saiu do jeito que essas coisas saem: um convite pra uma conferência que apareceu no e-mail, um visto que morava no passaporte errado, uma passagem de 642 euros saindo às cinco da manhã, e uma esposa que montou o primeiro roteiro antes de eu terminar de dizer sim.</p>
-    <p>Esta é a semana como ela realmente aconteceu, reconstruída a partir das mensagens que mandei pro Claude, que foi no meu bolso o tempo todo, da academia, da ponte, da balsa, de um ponto de bonde que eu não consegui entender, de uma churrascaria que não me deixou entrar, de um ginásio que não deixou minha mochila entrar, e de uma churrascaria que deixou. O que foi planejado aparece riscado. O que aconteceu de verdade ganha foto. As mensagens ficam no inglês original, com erro de digitação e tudo, porque são prova.</p>
-    <p class="hand">Fotos do meu celular. Ortografia dos meus dedões. Cronologia do meu cartão de crédito, que lembrou de coisas que eu não lembrava. Paciência do Claude.</p>
-  </div>
-  <aside class="cast">
-    <h3>Elenco</h3>
-    <dl>
-      <dt>Eu</dt><dd>Dois passaportes brasileiros, um visto, opiniões fortes sobre carne.</dd>
-      <dt>Clarissa</dt><dd>Minha esposa. Escreveu o roteiro v1. Ganhou coisas dos Warriors, de Stanford e toneladas de cacarecos.</dd>
-      <dt>Whisky</dt><dd>Nosso cachorro. Tinha uma butique na Union St na lista. Não ganhou nada. Desculpa, Whisky.</dd>
-      <dt>Max</dt><dd>Mandou o convite que começou tudo.</dd>
-      <dt>Rahul</dt><dd>Amigo feito na quarta. Acredita que um dia eu estudo em Stanford.</dd>
-      <dt>Claude</dt><dd>No meu bolso a semana inteira. Passou uma tarde controlando o Mac errado.</dd>
-      <dt>Meus pés</dt><dd>Papel coadjuvante. Protocolaram uma reclamação formal na terça.</dd>
-    </dl>
-  </aside>
-</section>
-
-<nav class="daynav" aria-label="Dias">
-  <ul>
-    <li><a href="#pt-before"><span>0</span>Antes</a></li>
-    <li><a href="#pt-mon"><span>1</span>Seg</a></li>
-    <li><a href="#pt-tue"><span>2</span>Ter</a></li>
-    <li><a href="#pt-wed"><span>3</span>Qua</a></li>
-    <li><a href="#pt-thu"><span>4</span>Qui</a></li>
-    <li><a href="#pt-fri"><span>5</span>Sex</a></li>
-    <li><a href="#pt-sat"><span>6</span>Sáb</a></li>
-    <li><a href="#pt-tally"><span>#</span>Placar</a></li>
-  </ul>
-</nav>
-
-<!-- MAP -->
-<section class="wrap mapwrap">
-  <div class="eyebrow">A semana num mapa só</div>
-  <div class="mapcard mapcard-img">
-    <img src="img/poster-illustrated.jpg" alt="Pôster ilustrado em estilo vintage da semana em San Francisco: dezessete paradas numeradas com desenhos, a caminhada de terça, a balsa, um destaque de Palo Alto e adesivos nas margens com o placar e as piadas." style="aspect-ratio:3/2">
-    <div class="legend">desenhado pelo Claude Design a partir de um briefing muito longo &nbsp;·&nbsp; fora de escala, menos os sentimentos &nbsp;·&nbsp; 3000 por 2000 px, feito pra imprimir. Em inglês, como a viagem.</div>
-  </div>
-</section>
-
-<!-- BEFORE -->
-<section class="wrap chapter" id="pt-before">
-  <header>
-    <div class="daynum"><small>Prólogo</small>0</div>
-    <div><h2>Dois passaportes, um visto e o Mac errado</h2><p class="dek">Em que eu reservo a viagem num fim de semana, o Claude controla o computador errado, e ninguém consegue comprar o workshop com uma vaga sobrando.</p></div>
-  </header>
-  <div class="grid">
-    <div class="prose">
-      <p>Começou com um e-mail. A inscrição da conferência foi cortesia do Max, o que eu anunciei com o entusiasmo de quem acabou de economizar 1.399 dólares: "got the invite finally, so I don't pay for it." O visto estava em dia. O visto também estava no passaporte velho, o que significou viajar com os dois passaportes no mesmo bolso pelo resto da semana, uma frase que apareceria em todas as listas de checagem dali em diante.</p>
-      <p>O voo era uma tarifa da TAP de 642 euros saindo do Porto às 05:00, que o Claude descreveu como brutal pra maioria das pessoas mas tranquila pra quem mora a dez minutos do aeroporto. A tarifa era a Discount: só bagagem de mão, dez quilos. Guardem os dez quilos.</p>
-      <p>A Clarissa montou o primeiro roteiro no chat dela. Alcatraz estava fechada exatamente naquela semana. Os Warriors jogavam contra os Lakers na sexta. Setor 222, fileira 8, cadeira 11.</p>
-      <p>Aí veio o sábado antes da viagem, quando pedi pro Claude entrar no portal da conferência e reservar minhas palestras. A janela do navegador ficou em branco. Troquei configuração. Troquei navegador. Digitei uma frase que merecia moldura. O Claude, descobriu-se, estava fielmente abrindo navegadores no Mac Studio do outro cômodo enquanto eu estava sentado no MacBook. Achado o computador certo, 18 palestras reservadas em dez minutos.</p>
-      <p>A única coisa que nunca deu pra reservar foi o workshop de créditos de IA, que mostrava "1 de 30 vagas" toda santa vez que o Claude checava, cinco vezes ao longo da semana, feito caça-níquel que só dá duas cerejas.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="label">Sábado, dois dias antes (mensagens originais)</div>
-        <div class="msg me">fuck sakeso k use chome instead I'll put side by side then</div>
-        <div class="msg me">which computer are you in?</div>
-        <div class="msg them">The Mac Studio, apparently. Closing everything there now.</div>
-        <div class="msg me">that's it... go there and login</div>
-        <div class="label">Domingo, depois de quatro dias de conselhos sobre o Clipper</div>
-        <div class="msg me">what's clipper</div>
-        <div class="label">Domingo à noite, Spotify</div>
-        <div class="msg me">this is stupid!!! can't you operate spotify on my laptop and avoid spotify choosing stuff?</div>
-      </div>
-      <div class="photos">
-        <figure class="ph" style="--r:-2deg"><img src="img/itinerary-print.jpg" alt="Um roteiro da semana impresso, com uma mão apoiada em cima."><figcaption>O plano, impresso, porque o Claude não funciona a 11.000 metros.</figcaption></figure>
-        <figure class="ph" style="--r:1.5deg;--ar:9/16"><img src="img/clipper.jpg" alt="Cartão de transporte Clipper na carteira do celular com 25 dólares carregados."><figcaption>Clipper. Carregado, finalmente entendido, encostado em tudo que tinha roda.</figcaption></figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MONDAY -->
-<section class="wrap chapter" id="pt-mon">
-  <header>
-    <div class="daynum"><small>Segunda, 26 de outubro</small>1</div>
-    <div><h2>Vinte e três horas porta a porta, depois um palácio</h2><p class="dek">Despertador às 02:40. Horário de verão acabou de madrugada. Saguão de desembarque de Lisboa visitado por engano. Um quarto silencioso. Um primeiro hambúrguer.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">03:03</span><b></b>Aeroporto do Porto</li>
-    <li><span class="t">06:14</span><b></b>Lisboa, terminal errado por um instante</li>
-    <li><span class="t">09:40</span><b></b>12h45 sobre o Atlântico</li>
-    <li><span class="t">15:25</span><b></b>SFO</li>
-    <li><span class="t">18:48</span><b></b>Cow Hollow Inn, quarto silencioso</li>
-    <li><span class="t">19:00</span><b></b>Palace of Fine Arts</li>
-    <li><span class="t">19:39</span><b></b>Super Duper, hambúrguer nº 1</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>Fui dormir às sete da noite anterior e saí de casa às três e dez, com um plano de treinar toda manhã em San Francisco. Guardem essa informação. Em Lisboa eu pousei, saí confiante pelo desembarque, e mandei uma mensagem perguntando se agora eu devia ir pro Terminal 2. Não devia. Voltei pra dentro.</p>
-      <p>Em algum ponto sobre o Atlântico, o Claude reconstruiu minhas listas do Google Maps a partir dos 402 lugares que eu tenho salvos em Portugal, e foi assim que ele aprendeu que eu gosto de smash burger, picanha, francesinha, café especial e bar de coquetel que precisa de alguém pra te contar que existe. Ele também tentou reservar o House of Prime Rib. O House of Prime Rib não aceita reserva online pra uma pessoa. Anotem. Isso volta.</p>
-      <p>Minha primeira mensagem em solo americano não foi "cheguei". Foi "best burgers in sf!" O hotel tinha lido o e-mail sobre a avenida barulhenta e me dado um quarto silencioso. Perguntaram se eu queria arrumação completa ou só toalha. Fui de completa, como um homem de férias.</p>
-      <p>Tratei o jet lag do jeito certo: uma caminhada na última luz do dia até o Palace of Fine Arts, onde a rotunda estava iluminada e duplicada na lagoa, depois um hambúrguer no Super Duper na Chestnut, depois, segundo o cartão, duas rodadas no Sully's na mesma rua a 15,38 cada, que foi onde a contagem de Negronis começou em silêncio. Cama às 21:46. Meu relógio deu 87 por cento pra noite e não comentou nada sobre o hambúrguer. Ele teria muito a dizer depois.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">pousei e saí vou para terminal 2?<time>06:14, Lisboa</time></div>
-        <div class="msg them">Não. Você está no desembarque. Dá meia-volta, de volta pro Terminal 1, segue Ligações.</div>
-        <div class="msg me">best burgers in sf! I'm here btw on my way to the hotel… and still see 2 artefacts<time>18:05, SF</time></div>
-        <div class="msg me">quiet room it is!! safe to go to fine arts thingy then yeah?<time>18:48</time></div>
-        <div class="msg me">went to place of fine arts now super dupper got tired… perhaps I can go have some cocktails close to where I am<time>19:39</time></div>
-      </div>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph wide" style="--r:-1deg;--ar:4/3"><img src="img/palace-night-1.jpg" alt="A rotunda do Palace of Fine Arts iluminada à noite, refletida na lagoa."><figcaption>O "negócio das belas artes". Valeu a caminhada, valeu o cansaço.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/palace-night-2.jpg" alt="A rotunda iluminada vista do outro lado da água."><figcaption>Iluminada pra um homem acordado desde as 02:40.</figcaption></figure>
-    <figure class="ph" style="--r:-1.5deg"><img src="img/palace-columns.jpg" alt="Colunas altas do Palace of Fine Arts brilhando em laranja à noite."><figcaption>Colunas. Jet lag faz tudo parecer cenário de filme.</figcaption></figure>
-  </div>
-</section>
-
-<!-- TUESDAY -->
-<section class="wrap chapter" id="pt-tue">
-  <header>
-    <div class="daynum"><small>Terça, 27 de outubro</small>2</div>
-    <div><h2>O dia em que meus pés protocolaram uma reclamação</h2><p class="dek">Academia, rua torta, rosbife, ônibus, ponte, penhasco, balsa, hambúrguer, Waymo, torre, bonde, crachá, prime rib, Negroni. Nessa ordem. Num dia só.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">06:45</span><b></b>Crunch, Polk St</li>
-    <li><span class="t">08:45</span><b></b>O quarteirão torto da Lombard</li>
-    <li><span class="t">09:37</span><b></b>Lucca, rosbife</li>
-    <li><span class="t">10:45</span><b></b>Ônibus 28</li>
-    <li><span class="t">11:31</span><b></b>Golden Gate a pé</li>
-    <li><span class="t">12:51</span><b></b>Lyft via Battery Spencer</li>
-    <li><span class="t">13:35</span><b></b>Balsa de Sausalito</li>
-    <li><span class="t">14:26</span><b></b>Gott's, hambúrguer nº 2</li>
-    <li><span class="t">15:26</span><b></b>Primeiro Waymo, até a Coit Tower</li>
-    <li><span class="t">16:43</span><b></b>Powell St, o "negócio do bonde"</li>
-    <li><span class="t">17:30</span><b></b>Crachá no Hotel Zephyr</li>
-    <li><span class="t">19:57</span><b></b>The Brazen Head</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>O dia começou numa academia dentro de um antigo cinema mourisco na Polk Street, porque é claro que sim. Diária de 35 dólares, treino passou da hora. Esse foi o primeiro dos treinos diários que eu tinha prometido a mim mesmo. Foi também o último. O relógio registrou o dia com esforço 18.0 e 29.918 passos, que é o que acontece quando você emenda uma academia com uma ponte, e meu corpo cancelou discretamente o resto do programa por mim.</p>
-      <p>Dali subi até a Lombard, olhei o quarteirão torto de cima, desci o quarteirão torto, e parei no Lucca na Chestnut pra um sanduíche de rosbife que eu chamei de café da manhã, depois no Twisted St. Cafe pro café que eu caçava desde as 06:22.</p>
-      <p>Então a ponte. Perguntei se o ônibus ia "pela água", como eu iria a pé, o que é uma pergunta justa sobre um ônibus. Ele foi pelo Presidio. O dia estava limpo, sem neblina, as colinas de Marin nítidas atrás das torres, e às 11:31 mandei duas palavras: "starting to cross now."</p>
-      <p>Do outro lado, o plano era subir a pé até Battery Spencer pra foto e descer até Sausalito pra balsa das 13:35. O plano não tinha conhecido meus pés. Chamei um Lyft pra uma estrada que meu celular insistia em chamar de Con Woman Rd, ele parou na bateria tempo suficiente pra foto de corpo inteiro com a ponte atrás, e me deixou na balsa com tempo de comprar uma bebida. Às 12:52 protocolei a reclamação: "my feet are killing me now 😅". O Claude observou que era a academia mais dez quilômetros. Não ajudou.</p>
-      <p>Na balsa tomei duas decisões. Ia pular a recepção de clientes daquela noite, o evento só pra convidados em volta do qual minha inscrição tinha sido montada, porque eu queria mais San Francisco. E ia almoçar direito. O almoço direito foi um hambúrguer no Gott's do Ferry Building. Depois, sem aviso, "ha got waymo for the first time". Filmei o carro encostando no meio-fio feito pai nervoso, filmei o volante girando sozinho, e um carro sem ninguém na frente me levou até a Coit Tower, onde o cartão mostra três visitas separadas à lojinha em 22 minutos, que é quanto custa a indecisão: 4,60, 11 e 7,99.</p>
-      <p>Washington Square, depois o Caffe Trieste, o velho café italiano de North Beach que o Claude recomendou, clássico em todos os sentidos inclusive o de só aceitar dinheiro vivo. O caixa eletrônico pelo menos ficava dentro. 23,50 sacados pra um café e um doce. Depois a Powell Street, onde o bonde me derrotou. "can't figure how to hop in the tram thingy." É só acenar, descobri. Acenei. Nove dólares, descendo a Hyde Street com Alcatraz no para-brisa, até o fim da linha na beira d'água.</p>
-      <p>Crachá recolhido, um drinque num bar perto da água, contagem de Negronis subindo. Então a saga. O House of Prime Rib me recusou duas noites seguidas. Na segunda entrei e ouvi uma hora e meia de espera. Na terça entrei mais cedo, pedi um banco no bar, e descobri que banco no bar não existe pra uma pessoa só numa terça-feira. A mesma uma hora e meia. "no go." A quatro minutos do hotel, sem placa na porta, o The Brazen Head tinha um prime rib de dez onças no cardápio, disponibilidade limitada. Consegui, com batata recheada e salada verde com molho creamy Italian. Depois: "got a negroni." Saga encerrada. Levou um dia.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">does it go through the water as I would walk?<time>10:31</time></div>
-        <div class="msg me">starting to cross now<time>11:31</time></div>
-        <div class="msg me">are you sure con woman rd ubers get there?<time>12:14</time></div>
-        <div class="msg me">my feet are killing me now 😅<time>12:52</time></div>
-        <div class="msg them">Não surpreende: a academia mais uns 10 km de caminhada já.</div>
-        <div class="msg me">burger now it is at gotts<time>14:26</time></div>
-        <div class="msg me">ha got waymo for the first time<time>15:26</time></div>
-        <div class="msg me">can't figure how to hop in the tram thingy<time>16:43</time></div>
-        <div class="msg them">Acena quando ele vier, pra o condutor saber que é pra parar.</div>
-        <div class="msg me">no go on house of prime rib but came to brazen head instead what should I have here?<time>19:57</time></div>
-        <div class="msg me">got a negroni<time>20:03</time></div>
-      </div>
-      <p class="note">Um dia. Academia, 2,7 km de ponte, um penhasco, uma balsa, um táxi robô, um bonde e um prime rib. Os pés tinham razão.</p>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph" style="--r:1deg;--ar:3/4"><video src="vid/gym.mp4" autoplay muted loop playsinline aria-label="Suporte de halteres dentro da Crunch na Polk Street, com o balcão do antigo cinema acima."></video><figcaption>Crunch, 07:00. A única prova de academia da semana. Reparem no balcão do cinema. Reparem na data.</figcaption></figure>
-    <figure class="ph" style="--r:-2deg"><img src="img/lucca-sandwich.jpg" alt="Um sanduíche de rosbife no pão dutch crunch, meio desembrulhado do papel."><figcaption>"a quick breakfast classic roast beef." Lucca, 09:37.</figcaption></figure>
-    <figure class="ph" style="--r:1deg"><img src="img/bridge-selfie.jpg" alt="Eu de óculos escuros sorrindo na frente da Golden Gate num dia limpo."><figcaption>Antes da travessia. Pés ainda colaborando.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/bridge-walk.jpg" alt="A passarela da Golden Gate com os cabos e a baía embaixo."><figcaption>Metade do caminho. Ninguém avisa que é levemente subida nos dois sentidos.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/bridge-under.jpg" alt="A torre sul da Golden Gate vista de baixo, com o Fort Point na base."><figcaption>Por baixo, antes da travessia.</figcaption></figure>
-    <figure class="ph" style="--r:-1.5deg"><img src="img/battery-spencer-1.jpg" alt="Eu em pé no penhasco de Battery Spencer com a ponte inteira e a cidade atrás."><figcaption>Battery Spencer, alcançada de Lyft, por princípio.</figcaption></figure>
-    <figure class="ph wide" style="--r:1deg;--ar:4/3"><img src="img/battery-spencer-view.jpg" alt="O vão completo da Golden Gate visto de Battery Spencer, com a cidade ao fundo e a baía brilhando."><figcaption>O motivo do Lyft. Valeu cada dólar de tarifa dinâmica.</figcaption></figure>
-    <figure class="ph" style="--r:-2deg"><img src="img/bridge-vista-road.jpg" alt="As torres da Golden Gate vistas de frente do lado de Vista Point, trânsito cruzando."><figcaption>Do lado de Marin, olhando pra trás pra 2,7 km de arrependimento.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg;--ar:3/4"><video src="vid/waymo-arrives.mp4" autoplay muted loop playsinline aria-label="Um Waymo branco encostando no meio-fio numa rua de San Francisco, sem ninguém dentro."></video><figcaption>"ha got waymo for the first time." Ele chega. Ninguém desce, porque não tem ninguém dentro.</figcaption></figure>
-    <figure class="ph" style="--r:-1.5deg;--ar:3/4"><video src="vid/waymo-first.mp4" poster="vid/waymo-first-poster.jpg" autoplay muted loop playsinline aria-label="Dentro do Waymo na terça, o volante girando sozinho."></video><figcaption>Dentro. O volante gira. Eu filmo o volante. O volante não se importa.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/ferry-sausalito.jpg" alt="Uma balsa azul e branca chegando ao cais de Sausalito, com uma placa To the Ferry Building na frente."><figcaption>13:35, exatamente como prometido. Eu tinha perguntado duas vezes.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/ferry-building-arrival.jpg" alt="A torre do relógio do Ferry Building e o letreiro Port of San Francisco vistos da água na chegada."><figcaption>Port of San Francisco, visto da água. O hambúrguer nº 2 está lá dentro.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/ferry-machine.jpg" alt="Máquina de bilhetes e tabela de tarifas da balsa no terminal de Sausalito."><figcaption>"is it here?" Era aqui. 13:35, 8,50, pago com o Clipper.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/caffe-trieste.jpg" alt="Um espresso numa xícara marrom e um doce numa mesa de mosaico no Caffe Trieste, gente no balcão atrás."><figcaption>Caffe Trieste. Só dinheiro. Caixa eletrônico dentro. Café que valeu os dois.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/street-tracks.jpg" alt="Uma rua íngreme de San Francisco com trilhos de bonde no asfalto."><figcaption>Powell St. O "negócio do bonde" mora nesses trilhos.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/cable-car-sign.jpg" alt="Uma placa de parada de bonde num poste na frente de casas vitorianas coloridas."><figcaption>A placa que eu fotografei em vez de acenar.</figcaption></figure>
-    <figure class="ph" style="--r:-1.5deg;--ar:3/4"><video src="vid/cablecar-selfie.mp4" autoplay muted loop playsinline aria-label="Selfie em vídeo pendurado na lateral de um bonde em movimento, de óculos escuros, a rua passando."></video><figcaption>Prova de embarque. Pendurado do lado como os locais, segurando como turista.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg;--ar:3/4"><video src="vid/cablecar-hyde.mp4" autoplay muted loop playsinline aria-label="Descendo a Hyde Street num bonde em movimento, trilhos descendo até a baía e Alcatraz."></video><figcaption>Descendo a Hyde Street, Alcatraz no para-brisa. Nove dólares bem gastos.</figcaption></figure>
-    <figure class="ph" style="--r:-2deg"><img src="img/brazen-prime-rib.jpg" alt="Uma fatia grossa de prime rib com batata assada, espinafre, raiz-forte e um Negroni, na luz vermelha do The Brazen Head."><figcaption>The Brazen Head, 20:03. Prime rib, batata recheada, Negroni. Saga encerrada, em luz vermelha.</figcaption></figure>
-  </div>
-</section>
-
-<!-- WEDNESDAY -->
-<section class="wrap chapter" id="pt-wed">
-  <header>
-    <div class="daynum"><small>Quarta, 28 de outubro</small>3</div>
-    <div><h2>Universe, dia um</h2><p class="dek">O motivo da viagem, oficialmente. Agentes de IA em todo palco, uma omelete de caranguejo recusada, um amigo feito, e a final do beisebol passando num balcão de frango frito.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">07:30</span><b></b>Home Plate, café da manhã</li>
-    <li><span class="t">09:00</span><b></b>Fort Mason, Universe '26</li>
-    <li><span class="t">10:30</span><b></b>Engenharia agêntica, Cowell Theater</li>
-    <li><span class="t">14:30</span><b></b>AMD e ING: a IA está pagando a conta?</li>
-    <li><span class="t">19:53</span><b></b>The Bird, SoMa</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>Café da manhã no Home Plate, a uma quadra do hotel. O Claude empurrou a omelete de caranguejo com certa força. O que eu pedi se perdeu na história, o que diz tudo.</p>
-      <p>Em Fort Mason as bandeiras estavam hasteadas, o arco brilhava, e o bufê tinha montado torres de donuts embaixo de um telão que dizia "hitting new bottlenecks" (batendo em novos gargalos). O plano de treino diário já era memória. Eu tinha vaga numa oficina prática que exigia fila 30 minutos antes. Pulei pra assistir duas palestras sobre engenharia agêntica, só lista de espera, sem vaga garantida, e entrei. Às 11:00: "i'm on agentic one. amazing so far what's next?" O resto do dia foi palco principal, roteadores de modelo, agentes com credenciais, e um slide da AMD e do ING perguntando se tudo isso está realmente pagando a conta, que é a pergunta que me fazem no trabalho toda semana.</p>
-      <p>A descoberta útil do dia, repetida nos dois seguintes: todo mundo naquele prédio estava brigando as mesmas brigas que eu brigo. A pressão vem de cima pra todo mundo. Nada do que estamos fazendo na Planet pareceu estranho pra ninguém. Eu colocaria isso no LinkedIn no dia seguinte, depois de uma piada sobre minha mala. O cartão também mostra uma compra na Logitech às 12:48, que ninguém lembra de ter decidido, e uma parada na Ghirardelli Square a caminho do jantar, que todo mundo lembra.</p>
-      <p>O jantar foi no The Bird, um balcão de sanduíche de frango frito em SoMa com a World Series na tela. "made a friend at the event." O amigo tem nome, Rahul, e na sexta à noite ele estava mandando mensagem de dentro do jogo: "so competitive." Foi uma boa noite.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">what t should i order<time>07:26</time></div>
-        <div class="msg them">A omelete de caranguejo. É o prato pelo qual o lugar é conhecido.</div>
-        <div class="msg me">agentic workflows automation I want to go there instead of sandbox / for 15 then agentic engineering one next door<time>09:04</time></div>
-        <div class="msg me">i'm on agentic one. amazing so far what's next?<time>11:00</time></div>
-        <div class="msg me">so i'm in the bird / what should I go for ? is it good? made a friend at the event<time>19:53</time></div>
-      </div>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph" style="--r:-1.5deg"><img src="img/universe-entrance.jpg" alt="A entrada do Universe '26 em Fort Mason com bandeiras coloridas contra um céu azul."><figcaption>Fort Mason, arrumada pra festa.</figcaption></figure>
-    <figure class="ph" style="--r:1deg"><img src="img/octocat-arch-1.jpg" alt="Olhando através de um arco roxo gigante iluminado pra dentro do GitHub Central."><figcaption>Pelo gato, pra dentro do GitHub Central.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/universe-stage.jpg" alt="Uma plateia lotada de frente pro palco principal do Universe '26."><figcaption>Palco principal. Eu entrei. A abertura estava "lotada".</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/slide-days.jpg" alt="Um slide de conferência com os números 1,5 dias, menos 43 a 34 por cento, cerca da metade."><figcaption>Todo slide tinha um número. Este tinha três.</figcaption></figure>
-    <figure class="ph" style="--r:-2deg"><img src="img/slide-agenda.jpg" alt="Um palestrante no palco na frente de um slide de agenda listando ING, AMD e GitHub."><figcaption>AMD, ING, GitHub: a IA está pagando a conta? Minha pergunta semanal, num palco.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/doughnut-towers.jpg" alt="Torres de donuts empilhados em postes de madeira numa mesa de bufê de conferência, um letreiro atrás dizendo hitting new bottlenecks."><figcaption>O bufê. Torres de donuts, embaixo de um letreiro sobre gargalos. Ninguém no GitHub notou a piada. Eu notei.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/the-bird.jpg" alt="Dentro do The Bird, um restaurante de balcão com cardápio na parede, letreiro de cerveja e um jogo de beisebol na tela."><figcaption>The Bird. World Series na tela. Rahul fora do quadro.</figcaption></figure>
-  </div>
-</section>
-
-<!-- THURSDAY -->
-<section class="wrap chapter" id="pt-thu">
-  <header>
-    <div class="daynum"><small>Quinta, 29 de outubro</small>4</div>
-    <div><h2>Os laboratórios, o post e uma tempestade dentro de casa</h2><p class="dek">Anthropic, OpenAI e Google num palco só. Um post no LinkedIn com piada de mala. Compras pra uma esposa e um cachorro. O museu de ciências perde pra um bar tiki. Um sanduíche de frango ganha duas vezes.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">09:00</span><b></b>A visão dos laboratórios, palco principal</li>
-    <li><span class="t">12:16</span><b></b>Post no LinkedIn, escrito entre palestras</li>
-    <li><span class="t">14:00</span><b></b>Encerramento</li>
-    <li><span class="t">16:00</span><b></b>Union St e Fillmore, presentes</li>
-    <li><span class="t">16:25</span><b></b>Shake Shack, contra orientação</li>
-    <li><span class="t">17:00</span><b></b>Tonga Room, no Fairmont</li>
-    <li><span class="t">21:02</span><b></b>The Bird, de novo</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>O segundo dia abriu com o painel dos laboratórios, as pessoas que constroem os modelos sentadas em fila. Na hora do almoço eu queria um post no LinkedIn. Meu briefing chegou em quatro mensagens: uma semana em SF, não dois dias; as grandes empresas com quem eu tinha conversado, pelo nome; o trabalho de experiência do desenvolvedor que todas elas estão fazendo e que eu estou liderando na Planet; um agradecimento ao Max. Depois uma quinta: "need a joke at start need to figure an extra bag to take all the swag I got." O post abriu com a minha mala.</p>
-      <p>A tarde era pra ser uma segunda volta de bonde. "cable car I did already we should do something else." A outra coisa foram presentes. O plano tinha uma butique de cachorro na Union Street pro Whisky e a Le Labo na Fillmore pra Clarissa. O resultado: nada pro Whisky, porque nada na butique estava certo, e pra Clarissa uma mistura que o plano nunca previu, algo da loja dos Warriors, algo de Stanford, e o que eu só consigo chamar de toneladas de cacarecos do evento, o brinde que depois ameaçaria os dez quilos.</p>
-      <p>A noite era pra ser o Exploratorium After Dark, ciência interativa só pra adultos com um drinque na mão. Aí apareceu um panfleto: happy hour no Tonga Room and Hurricane Bar do Fairmont, pra líderes de tecnologia, oferecido pela Andela e pelo GitHub. O Tonga Room é um bar tiki de 1945 com uma piscina no meio, uma banda num barco, e uma tempestade dentro do salão a cada meia hora. O Exploratorium nunca teve chance.</p>
-      <p>Duas confissões do extrato do cartão. Às 15:51 perguntei se valia a pena experimentar o sanduíche do Shake Shack e ouvi que não, é uma rede de Nova York. Às 16:25 eu estava no Shake Shack. Depois, tarde da noite, de algum lugar a caminho de casa: "Be real. Is the mouth better than the bird?" Seguido da correção: "the melt." O veredito foi não, o Bird é melhor. Então às 21:02 eu estava no Bird. De novo. Segunda noite seguida. Perguntei em nome da ciência, que é mais do que o Exploratorium recebeu.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">not two days in gh it's been a full week in SF and attending gh universe<time>12:19</time></div>
-        <div class="msg me">I want to thank Max for the invitation.<time>12:21</time></div>
-        <div class="msg me">need a joke at start need to figure an extra bag to take all the swag I got<time>12:40</time></div>
-        <div class="msg me">no exploratorium I got invited to this<time>15:32</time></div>
-        <div class="msg me">is it worth me trying. shakeshack sandwich?<time>15:51</time></div>
-        <div class="msg them">Não. É rede de Nova York. O Super Duper é o local, e você já foi.</div>
-        <div class="msg me">Be real. Is the mouth better than the bird?<time>20:36</time></div>
-        <div class="msg me">the melt<time>20:37</time></div>
-      </div>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph" style="--r:1.5deg;--ar:3/4"><img src="img/slide-process.jpg" alt="Um palestrante ao lado de um slide grande dizendo To build software, you need the whole process."><figcaption>"Pra construir software, você precisa do processo inteiro." Eu digo isso há dois anos.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/octocat-arch-2.jpg" alt="O arco iluminado do GitHub Central visto de lado, com pessoas passando."><figcaption>Última passagem pelo gato.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/tonga-flyer.jpg" alt="Uma mão segurando um panfleto preto de Happy Hour no Tonga Room and Hurricane Bar."><figcaption>O panfleto que cancelou um museu de ciências.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:4/3"><img src="img/fort-mason-sunset.jpg" alt="Pôr do sol sobre Fort Mason com as tendas do Universe e o Festival Pavilion embaixo e a Golden Gate no horizonte."><figcaption>Fort Mason na hora de fechar. A ponte aparecendo na foto, como sempre.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/tonga-band.jpg" alt="Uma banda tocando sob um telhado de palha num barco flutuando na piscina do Tonga Room."><figcaption>A banda está num barco. O barco está numa piscina. A piscina está num hotel.</figcaption></figure>
-    <figure class="ph" style="--r:-2deg;--ar:3/4"><video src="vid/tonga-rain.mp4" autoplay muted loop playsinline aria-label="Chuva caindo dentro do salão sobre a piscina do Tonga Room, vista através de cordas de navio."></video><figcaption>E aí chove. Dentro. A cada meia hora.</figcaption></figure>
-    <figure class="ph" style="--r:1deg"><img src="img/cereal-killer.jpg" alt="Uma van Ford rosa e branca à noite com as palavras Cereal Killer no capô."><figcaption>Tarde, perto da Montgomery St. Pergunta científica pendente.</figcaption></figure>
-  </div>
-  <div class="aside">
-    <h3>O post, numa linha</h3>
-    <p>"Minha cabeça está cheia, e minha mala também. Voltar só com bagagem de mão era um plano corajoso antes de eu descobrir os brindes." Depois o ponto de verdade: toda empresa com quem conversei está rodando a mesma cartilha de experiência do desenvolvedor que estamos rodando na Planet, e nenhuma das nossas iniciativas pareceu estranha pra ninguém. Agradeci ao Max e ao GitHub. O problema da mala não foi resolvido pelo post.</p>
-  </div>
-</section>
-
-<!-- FRIDAY -->
-<section class="wrap chapter" id="pt-fri">
-  <header>
-    <div class="daynum"><small>Sexta, 30 de outubro</small>5</div>
-    <div><h2>Um trem, uma garagem, uma bola de beisebol e uma mochila muito pequena</h2><p class="dek">Descendo a península de Caltrain. Stanford de manhã, um museu abandonado no almoço, uma bola sobre a qual tive que perguntar, uma jaqueta pra mim, e um ginásio que disse não à mochila.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">08:32</span><b></b>Lyft, cancelado uma vez</li>
-    <li><span class="t">09:25</span><b></b>Caltrain 118, plataforma 9</li>
-    <li><span class="t">10:14</span><b></b>Palo Alto, Stanford a pé</li>
-    <li><span class="t">12:05</span><b></b>Garagem da HP</li>
-    <li><span class="t">12:56</span><b></b>Local Union 271, hambúrguer nº 3</li>
-    <li><span class="t">13:02</span><b></b>Museu, cancelado</li>
-    <li><span class="t">15:16</span><b></b>Loja dos Giants</li>
-    <li><span class="t">16:22</span><b></b>Loja dos Warriors</li>
-    <li><span class="t">16:35</span><b></b>Guarda-volumes, 10 dólares</li>
-    <li><span class="t">19:00</span><b></b>Warriors x Lakers</li>
-    <li><span class="t">22:05</span><b></b>Caminhada até o Oracle Park atrás de carro</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>A primeira pergunta do dia, mandada de uma cafeteria enquanto um Lyft era cancelado em cima de mim, foi sobre a mochila. O Chase Center não permite mochila. Eu tinha uma pequena. Esse fato ocuparia mais ou menos um quinto das mensagens do dia.</p>
-      <p>Caltrain 118, plataforma 9, encosta o Clipper. "which stop do I get off? next is south SF." Palo Alto, depois de Menlo Park. Subi a Palm Drive até o pátio de Stanford, o campus onde um menino no Brasil tinha decidido estudar e nunca estudou, fiquei uma hora dentro dele, achei a Garagem da HP, que é uma garagem atrás de uma casa numa rua tranquila onde mora gente, tirei minhas fotos da calçada do outro lado no ritmo de quem espera uma viatura, e sentei no Local Union 271 na University Avenue pra um hambúrguer de meio quilo frito em gordura de pato, meu terceiro da semana, e foi nesse momento que olhei as fotos do Museu de História da Computação que eu planejava há três semanas e mandei a mensagem mais honesta da viagem: "i'll be honest… looked the pics of the museum… not really my thing." De volta pra cidade, então.</p>
-      <p>Na loja dos Giants havia uma vitrine de bolas de beisebol autenticadas, usadas em jogo, e nenhuma ideia de qual comprar. "figure for me." O Claude escolheu a B-5, Bradley to Cox, Foul Ball, 22 de setembro, Giants rebatendo na parte baixa do quinto inning. "foul ball?", respondi. Seguiu-se uma aula rápida de beisebol. Comprei. Olhei a parede de camisas, considerei uma Willie Mays 24, e deixei lá. O presente da Clarissa viria da loja dos Warriors, onde o cartão registra um número que vou descrever como $$$, e da livraria de Stanford mais cedo, que também foi $$$. Os dez quilos começavam a parecer otimistas.</p>
-      <p>A mochila. Minha mochila era "muito pequena", "tipo um saco", fotografada do lado da minha mão pra dar escala. Tinha alça e bolso na frente, então não. Dava pra entrar com uma sacola da loja dos Warriors? Talvez. Aí a revelação: a mochila dobra dentro do próprio bolso. No fim paguei os 10 dólares mesmo assim, deixei tudo no guarda-volumes, e voltei com uma jaqueta retrô "The City" dos Warriors e um boné novo com o adesivo de tamanho ainda na aba. Depois, tendo ouvido às 16:41 que eu já tinha comido hambúrguer naquele dia e devia experimentar o brisket, fui no Gott's às 16:44. Hambúrguer número quatro. O cartão não mente.</p>
-      <p>Warriors contra Lakers, setor 222, fileira 8, uma selfie antes das cadeiras encherem. Não mandei nenhuma mensagem durante o jogo, que é o jeito certo de assistir a um. As fotos contam no meu lugar: 78 a 78 no fim do terceiro quarto, depois Warriors 101 a 86 faltando seis minutos, e um telão anunciando que o 26º ponto do Curry tinha acabado de passá-lo à frente de Dominique Wilkins como 18º maior pontuador da história. Eu estava lá dentro pra isso. Placar final 112 a 95, Curry com 31 pontos e oito cestas de três, depois de um primeiro quarto que os Lakers venceram por 38 a 15 e um segundo que os Warriors venceram por 38 a 15, o tipo de simetria que só acontece no seu primeiro jogo. Os Warriors então me mandaram por e-mail o resumo do jogo errado. Às 22:05 a única atualização foi "no go here": nenhum carro na saída do ginásio. Caminhei quinze minutos pela Fourth Street até o estádio de beisebol e achei um lá. Era um Uber. O Lyft já tinha me cancelado uma vez naquele dia e eu guardo rancor.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">still waiting for the lyft they cancelled first time<time>08:32</time></div>
-        <div class="msg me">which stop do I get off? next is south SF<time>09:34</time></div>
-        <div class="msg me">i'll be honest… looked the pics of the museum… not really my thing<time>13:02</time></div>
-        <div class="msg me">btw… my bag is very small. sure I can't get in with it? hand for reference… and it is like a sack<time>13:38</time></div>
-        <div class="msg me">i'll empty the backpack. this backpack turns into a foldable back pocket thingy<time>14:20</time></div>
-        <div class="msg me">figure for me<time>15:16</time></div>
-        <div class="msg me">foul ball?<time>15:17</time></div>
-        <div class="msg me">all set. dropped the bags. 10 dollars and have 1,5 hour after the game to collect<time>16:35</time></div>
-        <div class="msg them">Ficou a cara. Dica rápida: o adesivo de tamanho ainda está na aba do boné.</div>
-        <div class="msg them">Como foi o jogo?<time>21:16</time></div>
-        <div class="msg me">should i walk to oracle stadium? no go here<time>22:05</time></div>
-        <div class="label">Sexta 21:17, Rahul, no WhatsApp</div>
-        <div class="msg them">dude it was awesome to meet you man, you will one day hopefully get to attend stanford</div>
-        <div class="msg them">the game is awesome isn't it</div>
-        <div class="msg them">so competitive</div>
-      </div>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph" style="--r:-1.5deg"><img src="img/caltrain-board.jpg" alt="O painel de partidas do Caltrain na estação 4th and King."><figcaption>Plataforma 9, trem 118. Primeiro Caltrain.</figcaption></figure>
-    <figure class="ph wide" style="--r:1deg;--ar:4/3"><img src="img/stanford-quad.jpg" alt="O pátio principal de Stanford com arcadas de arenito, palmeiras e um caminho até a Memorial Church."><figcaption>Stanford, 10:30. O outro sonho dos anos 90, finalmente ao vivo.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/stanford-church.jpg" alt="A Memorial Church com sua fachada de mosaico dourado emoldurada por um arco de arenito."><figcaption>Memorial Church pelo arco. Não sou aluno. Ainda, diz o Rahul.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/stanford-arch.jpg" alt="A entrada em arco de arenito do pátio principal de Stanford sob um céu nublado."><figcaption>A porta da frente. Continua na lista.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:4/3"><img src="img/hp-garage.jpg" alt="Uma rua residencial tranquila em Palo Alto com uma casa de madeira marrom, árvores e um carro estacionado; a Garagem da HP fica atrás."><figcaption>A Garagem da HP, berço do Vale do Silício, fotografada do outro lado da rua na velocidade de um homem que acha que alguém vai chamar a polícia. É a casa de alguém.</figcaption></figure>
-    <figure class="ph wide" style="--r:1deg;--ar:4/3"><img src="img/oracle-park.jpg" alt="A entrada O'Doul Gate do Oracle Park sob um céu azul limpo, Home of the San Francisco Giants."><figcaption>Oracle Park, de relance, a caminho da bola.</figcaption></figure>
-    <figure class="ph" style="--r:1deg"><img src="img/backpack-hand.jpg" alt="Uma mochila preta pequena e dobrável numa mesa de madeira com uma mão em cima pra dar escala."><figcaption>Prova A. "hand for reference."</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/baseballs.jpg" alt="Uma vitrine de bolas de beisebol autenticadas em cubos transparentes com etiquetas."><figcaption>B-5, Bradley to Cox, foul ball. Embaixo à direita. 40 dólares e uma aula.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/jerseys.jpg" alt="Uma arara de camisas creme dos Giants com Mays 24, Devers 16, Webb 62 e Lee 51 nas costas."><figcaption>Considerada. Depois fui de Warriors.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:4/3"><img src="img/warriors-selfie.jpg" alt="Eu sorrindo numa jaqueta de cetim azul dos Warriors e um boné cinza dos Warriors na frente do Chase Center."><figcaption>Malas no guarda-volumes. Adesivo na aba. Pronto.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/game-selfie.jpg" alt="Eu de boné e jaqueta dos Warriors na frente do ginásio vazio antes do jogo, Warriors vs Lakers no telão."><figcaption>Setor 222, antes de todo mundo chegar. Adesivo removido.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:4/3"><img src="img/game-arena.jpg" alt="Chase Center lotado, o placar marcando 78 a 78 no terceiro quarto, a torcida gritando defense."><figcaption>78 a 78, terceiro quarto. O prédio inteiro gritando DEFENSE.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/game-curry.jpg" alt="O telão do Chase Center mostrando Warriors 101 Lakers 86 e um aviso de NBA History de que Curry passou Dominique Wilkins como 18º maior pontuador."><figcaption>101 a 86 a caminho de 112 a 95, e um pouco de história. Primeiro jogo da NBA. Começo decente.</figcaption></figure>
-  </div>
-</section>
-
-<!-- SATURDAY -->
-<section class="wrap chapter" id="pt-sat">
-  <header>
-    <div class="daynum"><small>Sábado, 31 de outubro</small>6</div>
-    <div><h2>Dez quilos, uma despedida, um ribeye e uma freira</h2><p class="dek">Tudo tem que caber. A feira é pulada porque eu já fui. Volto pra ponte em vez disso. O almoço é um bife com fritas e molho ranch, como um local. Depois o Halloween embarca no avião.</p></div>
-  </header>
-  <ol class="route">
-    <li><span class="t">06:53</span><b></b>Fazendo a mala, à força</li>
-    <li><span class="t">08:41</span><b></b>Twisted, café</li>
-    <li><span class="t">09:29</span><b></b>De volta à ponte, pra dizer tchau</li>
-    <li><span class="t">11:00</span><b></b>Check-out</li>
-    <li><span class="t">11:15</span><b></b>Original Joe's, North Beach</li>
-    <li><span class="t">13:15</span><b></b>SFO, e uma saga de salas VIP</li>
-    <li><span class="t">16:50</span><b></b>Embarque, com uma freira</li>
-    <li><span class="t">17:35</span><b></b>TP238 pra casa</li>
-    <li><span class="t">Dom 12:30</span><b></b>Lisboa, sala VIP nº 4, Porto a seguir</li>
-  </ol>
-  <div class="grid">
-    <div class="prose">
-      <p>Às 06:53 os dez quilos venceram. Brindes, uma bola de beisebol num cubo, uma jaqueta de cetim, um boné, as coisas dos Warriors da Clarissa, coisas de Stanford. "I hope I can manage thatZ." Consegui, com Z e tudo.</p>
-      <p>O plano da manhã era a feira do Ferry Plaza. Eu já tinha ido. A alternativa era o lado do oceano da cidade, Lands End e as ruínas de Sutro Baths. Tomei um café no Twisted em vez disso, peguei o ônibus até Crissy Field com o Clipper, que agora eu entendia, comprei 7 dólares de cartões-postais no Warming Hut, e fiz a coisa pra qual a semana inteira vinha apontando: voltei pra ponte. "came back to the bridge to say bye 🤗🤗." A foto, do alto do Fort Point com as nuvens abrindo sobre Marin, é a melhor da viagem, e tirei com o celular, tendo deixado a câmera de verdade em casa pra economizar peso.</p>
-      <p>O almoço sempre ia ser um bife. Uma churrascaria no Embarcadero foi reservada, depois cancelada por algo mais San Francisco: o Original Joe's em North Beach, bancos vermelhos, grelha aberta, ítalo-americano desde 1937. O Claude sugeriu o ribeye, ao ponto pra mal, molho de pimenta verde, ravióli da casa de acompanhamento. Meu relato: "got with fries and a salad with ranch on the side." Que é o pedido americano correto, e a semana numa frase. As fotos depois revelaram o que a mensagem omitiu: mais um Negroni do lado do prato, e uma tigela de sonhos quentes açucarados com chocolate e framboesa pra fechar. Eu tinha fechado a mala em dez quilos naquela manhã. Os sonhos não contaram.</p>
-      <p>No aeroporto meu novo passe de sala VIP do Revolut, aquele que me deixou "fancy now 😂😂", foi recusado por duas salas seguidas, uma delas "só pra comissários de bordo", até a China Airlines ter pena de mim. A sala era boa. As pessoas dentro dela eram pretensiosas. Comi e saí. E então, no portão, Halloween. O pessoal do embarque nos embarcou vestido de freira dos filmes de terror: uma acenando na janela e posando pra todo mundo, outro em pé na ponte de embarque de hábito completo, com óculos e barba, conferindo cartões de embarque com enorme seriedade. A última foto que tirei na América é uma freira demoníaca dando tchau. San Francisco sabe encerrar uma semana.</p>
-      <p>O Lyft pro aeroporto custou, até o centavo, o que o Lyft do aeroporto tinha custado seis dias antes. A cidade fechou as contas. Depois doze horas até Lisboa, os dois passaportes no mesmo bolso, e uma segunda sala VIP em Lisboa no domingo de manhã, onde as pessoas não eram menos pretensiosas e a comida não era menos grátis. Os relógios na América voltaram uma hora naquela noite. Os meus já tinham voltado uma semana antes. Por seis dias eu estive a sete horas de casa em vez de oito, e usei cada uma delas. O contador de passos confirma: 102.837 passos, uns 75 quilômetros a pé, em pernas que protocolaram reclamação formal no segundo dia.</p>
-    </div>
-    <div>
-      <div class="chat">
-        <div class="msg me">ok I have to squeeze stuff into the bag now and the backpack as well. I hope I can manage thatZ<time>06:53</time></div>
-        <div class="msg me">then for linch I want a proper steak<time>08:37</time></div>
-        <div class="msg me">came back to the bridge to say bye 🤗🤗<time>09:29</time></div>
-        <div class="msg them">Essa é a vista de cima do Fort Point. Provavelmente a melhor foto da viagem.</div>
-        <div class="msg them">Ribeye, ao ponto pra mal, pimenta verde, e pega o ravióli de acompanhamento.</div>
-        <div class="msg me">got with fries and a salad with ranch on the side<time>11:33</time></div>
-        <div class="msg me">or the club? revolut gives me acces I'm fancy now 😂😂<time>14:20</time></div>
-        <div class="msg me">golden and india water closed for flight attendants only… Said no to my lounge key. china let me in<time>14:47</time></div>
-        <div class="msg me">all done… fun stuff happened while boarding the staff<time>17:21</time></div>
-        <div class="msg me">in SF lounges were shit, pretentious people in lisbon not much different… worth it? just for the food really<time>Dom 12:31, Lisboa</time></div>
-        <div class="msg me">decided I was going to train in SF… only happened on Tuesday… shame on me…<time>Dom 12:31</time></div>
-      </div>
-    </div>
-  </div>
-  <div class="photos">
-    <figure class="ph wide" style="--r:-1deg;--ar:4/5"><img src="img/bye-bridge.jpg" alt="Eu sorrindo na frente da Golden Gate do alto do Fort Point, nuvens abrindo sobre as colinas de Marin."><figcaption>Tchau. 🤗🤗</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/waymo-dog.jpg" alt="Um cachorro branco peludo olhando pela janela traseira escura de um Waymo azul claro."><figcaption>A caminho do almoço, um cachorro no Waymo ao lado, encarando. Ninguém dirigindo nenhum dos dois.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg;--ar:3/4"><video src="vid/waymo.mp4" poster="vid/waymo-poster.jpg" autoplay muted loop playsinline aria-label="Dentro do Waymo de sábado, o volante girando sozinho."></video><figcaption>Waymo nº 2, hotel até o almoço, 8,78. Já era rotina.</figcaption></figure>
-    <figure class="ph" style="--r:2deg;--ar:4/3"><img src="img/joes-salad.jpg" alt="Uma salada picada com salame numa mesa redonda preta num banco de couro verde no Original Joe's, um Negroni atrás."><figcaption>Original Joe's, 11:20. Salada, ranch à parte, Negroni não à parte.</figcaption></figure>
-    <figure class="ph wide" style="--r:-1deg;--ar:16/9"><img src="img/joes-ribeye.jpg" alt="Um ribeye grelhado com alecrim e uma pilha de fritas finas num prato branco, um Negroni e um copo d'água atrás."><figcaption>Ribeye, 16 onças, fritas. O pedido que o Claude não sugeriu e o que eu sempre ia fazer.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/joes-doughnuts.jpg" alt="Três sonhos italianos açucarados numa taça prateada com calda de chocolate e framboesa."><figcaption>Sobremesa, não anunciada. Os dez quilos eram regra de mala, não de almoço.</figcaption></figure>
-    <figure class="ph" style="--r:2deg"><img src="img/joes-menu.jpg" alt="A página de carnes do cardápio do Original Joe's, com um ribeye de 16 onças e um tomahawk pra dois."><figcaption>A última foto de cardápio da semana.</figcaption></figure>
-    <figure class="ph" style="--r:-1.5deg"><img src="img/nun-wave.jpg" alt="Uma funcionária do portão de hábito de freira e máscara pálida de filme de terror, acenando pra câmera."><figcaption>Embarque, edição Halloween. Ela acenou primeiro.</figcaption></figure>
-    <figure class="ph" style="--r:1.5deg"><img src="img/nun-face.jpg" alt="Close da fantasia de freira mascarada com olhos amarelos e boca aberta, cordão escrito Welcome to World Class."><figcaption>"Bem-vindo à classe mundial", diz o cordão.</figcaption></figure>
-    <figure class="ph" style="--r:-1deg"><img src="img/nun-window.jpg" alt="A freira fantasiada ao lado da janela do portão, uma mão no vidro, o avião e as colinas lá fora."><figcaption>A última coisa que fotografei na América.</figcaption></figure>
-    <figure class="ph" style="--r:2deg;--ar:9/16"><img src="img/nun-jetbridge.jpg" alt="Na ponte de embarque, um homem de hábito de freira e óculos confere os passageiros enquanto embarcam."><figcaption>E na ponte de embarque, uma segunda freira. De óculos. Conferindo cartões de embarque.</figcaption></figure>
-  </div>
-</section>
-
-<!-- TALLY -->
-<section class="wrap tally" id="pt-tally">
-  <div class="eyebrow">A semana em números</div>
-  <h2 style="font-size:clamp(1.7rem,4vw,2.9rem)">Placar</h2>
-  <div class="board">
-    <div class="tile"><div class="n">4</div><div class="l">Hambúrgueres</div><div class="s">Super Duper, Gott's, Local Union, Gott's de novo. Mais o Shake Shack, contra orientação, e o Bird duas vezes.</div></div>
-    <div class="tile"><div class="n">2</div><div class="l">Bifes</div><div class="s">Prime rib na terça, ribeye no sábado. House of Prime Rib: 0.</div></div>
-    <div class="tile"><div class="n">5<span style="font-size:.45em;color:var(--muted)">+</span></div><div class="l">Negronis</div><div class="s">Dois no Sully's na segunda, um perto da água na terça, um no Brazen Head, um no Joe's. Contagem oficial: perdida.</div></div>
-    <div class="tile"><div class="n">1</div><div class="l">Reclamação dos pés</div><div class="s">Formal, às 12:52 de terça. Citada pelo Claude mais cinco vezes.</div></div>
-    <div class="tile"><div class="n">18</div><div class="l">Palestras reservadas</div><div class="s">Assisti várias. Pulei uma de propósito. Abri mão de uma vaga com fila.</div></div>
-    <div class="tile"><div class="n">5</div><div class="l">Checagens do workshop</div><div class="s">"1 de 30 vagas" toda vez. Vagas compradas: 0.</div></div>
-    <div class="tile"><div class="n">2</div><div class="l">Passaportes</div><div class="s">Mesmo bolso, a semana toda. Citados em toda lista de checagem.</div></div>
-    <div class="tile"><div class="n">10</div><div class="l">Quilos permitidos</div><div class="s">Uma mala. Brindes, bola, jaqueta, boné, presentes. Resultado: "managed thatZ".</div></div>
-    <div class="tile"><div class="n">9</div><div class="l">Listas no Maps</div><div class="s">Uns 115 lugares salvos. Uns 9 visitados. Uma proporção saudável.</div></div>
-    <div class="tile"><div class="n">2</div><div class="l">Computadores</div><div class="s">O Claude controlou o errado por uma hora. "which computer are you in?"</div></div>
-    <div class="tile"><div class="n">1</div><div class="l">Lyft cancelado</div><div class="s">Sexta de manhã. Mais um "no go here" depois do jogo.</div></div>
-    <div class="tile"><div class="n">0</div><div class="l">Dias de neblina</div><div class="s">San Francisco se comportou. Terça foi céu limpo do começo ao fim.</div></div>
-    <div class="tile"><div class="n">37</div><div class="l">Eventos no calendário</div><div class="s">Colocados no calendário da família pra Clarissa acompanhar de Portugal.</div></div>
-    <div class="tile"><div class="n">3</div><div class="l">Visitas à ponte</div><div class="s">Atravessei, olhei de Marin, voltei pra dizer tchau.</div></div>
-    <div class="tile"><div class="n">112</div><div class="l">a 95, Warriors</div><div class="s">"Como foi o jogo?" ficou sem resposta por 17 horas. Curry: 31 pontos, 8 cestas de três, e 18º da história enquanto eu assistia.</div></div>
-    <div class="tile"><div class="n">2</div><div class="l">Salas VIP que disseram não</div><div class="s">Depois uma que disse sim, em SF, e uma em Lisboa. Veredito: a comida.</div></div>
-    <div class="tile"><div class="n">102.837</div><div class="l">Passos</div><div class="s">Uns 75 km a pé. Só na terça: 29.918. A reclamação chegou por volta do passo 14.000.</div></div>
-    <div class="tile"><div class="n">1<span style="font-size:.45em;color:var(--muted)">/7</span></div><div class="l">Treinos</div><div class="s">Planejados diariamente. Aconteceu na terça. Os outros seis foram substituídos por ladeiras.</div></div>
-    <div class="tile"><div class="n">6h31</div><div class="l">Sono médio</div><div class="s">De 5h15 na primeira noite a 7h25 antes do jogo. 4h40 no avião de volta, 35% de qualidade, zero arrependimento.</div></div>
-    <div class="tile"><div class="n">$$$</div><div class="l">No cartão</div><div class="s">Hotel, depois compras, depois comida e bebida, depois corridas, nessa ordem. Clipper 38 dólares e, sim, valeu entender.</div></div>
-    <div class="tile"><div class="n">$$$</div><div class="l">Compras</div><div class="s">Warriors primeiro, Stanford segundo, Giants terceiro. Os dez quilos nunca tiveram chance.</div></div>
-    <div class="tile"><div class="n">43%</div><div class="l">Menor recuperação</div><div class="s">Sexta, antes do jogo. O relógio chamou a semana de "meh". Ele não estava lá pro ribeye.</div></div>
-  </div>
-
-  <div class="eyebrow" style="margin-top:48px">Primeiras vezes</div>
-  <div class="firsts">
-    <div class="badge gold" style="--r:-4deg">Waymo<small>Ter 15:26, "ha". Duas até sábado</small></div>
-    <div class="badge" style="--r:3deg">Bonde<small>Powell-Hyde, depois de acenar</small></div>
-    <div class="badge" style="--r:-2deg">Golden Gate a pé<small>2,7 km, sem neblina</small></div>
-    <div class="badge" style="--r:4deg">Caltrain<small>trem 118, plataforma 9</small></div>
-    <div class="badge gold" style="--r:-3deg">Jogo da NBA<small>Curry passou Wilkins enquanto eu via</small></div>
-    <div class="badge" style="--r:2deg">Foul ball<small>comprada, depois explicada</small></div>
-    <div class="badge" style="--r:-3deg">Prime rib<small>segunda noite, segunda porta</small></div>
-    <div class="badge" style="--r:3deg">Cartão Clipper<small>"what's clipper"</small></div>
-    <div class="badge" style="--r:-2deg">Tempestade tiki<small>dentro, a cada meia hora</small></div>
-    <div class="badge gold" style="--r:2deg">Embarcado por uma freira<small>Halloween, portão A</small></div>
-  </div>
-
-  <div class="eyebrow" style="margin-top:48px">Recomendações x realidade</div>
-  <div class="vs">
-    <div class="them"><h3>O Claude sugeriu</h3>
-      <ul><li>A omelete de caranguejo do Home Plate</li><li>Cioppino no Sotto Mare</li><li>Um banco no Swan Oyster Depot</li><li>Brisket no Fikscue, não um quarto hambúrguer</li><li>Não o Shake Shack</li><li>Ribeye com pimenta verde e ravióli da casa</li><li>Lands End e as Sutro Baths</li><li>O Museu de História da Computação, por três semanas</li></ul></div>
-    <div class="me"><h3>Eu comi</h3>
-      <ul><li>Sanduíche de rosbife no café da manhã</li><li>Três hambúrgueres, depois um quarto</li><li>Prime rib com batata recheada</li><li>Sanduíche de frango frito com a World Series na tela, depois o mesmo sanduíche na noite seguinte</li><li>Shake Shack, depois de ouvir que não</li><li>Ribeye com fritas, salada com ranch, um Negroni e sonhos</li><li>Café, depois a ponte de novo</li><li>"not really my thing"</li></ul></div>
-  </div>
-
-  <div class="eyebrow" style="margin-top:48px">Planejado x feito</div>
-  <ul class="plan">
-    <li class="done">Palace of Fine Arts à noite</li>
-    <li class="done">Quarteirão torto da Lombard</li>
-    <li class="done">Atravessar a Golden Gate</li>
-    <li class="done">Foto em Battery Spencer</li>
-    <li class="done">Balsa de Sausalito</li>
-    <li class="done">Coit Tower e North Beach</li>
-    <li class="done">Um bonde</li>
-    <li class="done">Prime rib (segunda noite, segunda porta)</li>
-    <li class="done">GitHub Universe, os dois dias</li>
-    <li class="done">Stanford e a Garagem da HP</li>
-    <li class="done">Bola dos Giants, jogo dos Warriors</li>
-    <li class="done">Presentes pra Clarissa (Warriors, Stanford, cacarecos)</li>
-    <li class="strike">Algo pro Whisky na butique de cachorro (nada estava certo)</li>
-    <li class="strike">Alcatraz (fechada naquela semana)</li>
-    <li class="strike">A recepção de clientes (escolhi mais cidade)</li>
-    <li class="strike">House of Prime Rib (no go)</li>
-    <li class="strike">Exploratorium After Dark (perdeu pra um bar tiki)</li>
-    <li class="strike">Sotto Mare</li>
-    <li class="strike">Museu de História da Computação (not really my thing)</li>
-    <li class="strike">O workshop de créditos de IA (1 de 30 vagas, pra sempre)</li>
-    <li class="strike">Feira no sábado (já tinha ido)</li>
-    <li class="strike">Lands End (café no lugar)</li>
-    <li class="strike">Epic Steak (trocado por bancos vermelhos)</li>
-  </ul>
-</section>
-
-<!-- CLOSING -->
-<section class="wrap closing">
-  <div class="grid">
-    <div class="prose">
-      <div class="eyebrow">Epílogo</div>
-      <h2>Vim por uma conferência e voltei por uma ponte</h2>
-      <p>A conferência foi boa. Aprendi que todo mundo tem os mesmos problemas, que é a coisa mais tranquilizadora que uma conferência pode ensinar, e disse isso em público. Mas a semana foi a outra coisa: a cidade que um menino no Brasil tinha decidido, em algum ponto entre Família Dinossauro e Três É Demais, conhecer um dia, conhecida a pé, de balsa, de táxi robô e de um bonde pro qual tive que ser ensinado a acenar.</p>
-      <p>Pulei a recepção por mais um pouco dela. Pulei o museu por mais um pouco dela. Na última manhã, com a mala feita e um bife reservado, subi de volta o morro acima do Fort Point pra olhar a ponte mais uma vez e dizer tchau, com dois emojis de abraço, como se faz com uma pessoa.</p>
-      <p class="hand orange">Da próxima vez: a câmera vem, os pés ganham um dia de folga, e Stanford recebe uma inscrição.</p>
-      <div class="aside" style="margin-top:22px"><h3>Nota do editor</h3><p>A primeira versão desta página foi escrita na terceira pessoa, como se uma pequena equipe de documentário tivesse me seguido comendo hambúrguer. Foi pra uma plateia de teste de dois amigos. O avaliador um chamou de "irritantemente boa" e "um pouco estranha", e anunciou planos de roubar ideias dela pra um blog, o que eu escolho ler como cinco estrelas. O avaliador dois pulou o "boa" e foi direto pro "estranha". Os dois tinham razão. Foi reescrita na primeira pessoa em algum ponto sobre a Groenlândia, com 4h40 de sono e 35% de qualidade. Os erros de digitação já eram meus.</p></div>
-    </div>
-    <figure class="ph" style="--r:1.5deg;max-width:380px;justify-self:center"><img src="img/battery-spencer-2.jpg" alt="Eu em pé no penhasco de Battery Spencer com a Golden Gate e a cidade atrás."><figcaption>Sonho desde os anos 90. Feito.</figcaption></figure>
-  </div>
-</section>
-
-<footer class="wrap">
-  <span>San Francisco, 26 a 31 de outubro de 2026. Escrito a partir de uma semana de mensagens, com o Claude.</span>
-  <span>Fotos: meu celular. Mapa: Claude Design. Pés: em recuperação.</span>
-</footer>
-
-</div>
 <script>
-function setLang(l){
-  var en=document.getElementById('body-en'),pt=document.getElementById('body-pt');
-  var show=l==='pt'?pt:en, hide=l==='pt'?en:pt;
-  hide.hidden=true; show.hidden=false;
-  document.documentElement.lang=l==='pt'?'pt-BR':'en';
-  document.getElementById('lang-en').setAttribute('aria-pressed',l==='en');
-  document.getElementById('lang-pt').setAttribute('aria-pressed',l==='pt');
-  hide.querySelectorAll('video').forEach(function(v){try{v.pause()}catch(e){}});
-  show.querySelectorAll('video').forEach(function(v){try{v.play()}catch(e){}});
-  try{localStorage.setItem('sf-lang',l)}catch(e){}
-  if(location.hash==='#pt'||location.hash==='#en'){history.replaceState(null,'',location.pathname)}
-}
-(function(){
-  var l='en';
-  try{l=localStorage.getItem('sf-lang')||'en'}catch(e){}
-  if(location.hash==='#pt')l='pt'; else if(location.hash==='#en')l='en';
-  if(l==='pt')setLang('pt');
-})();
 
 (function(){
   function done(el){el.classList.add('ld');var p=el.closest('.ph,.mapcard-img,.cover-art');if(p)p.classList.add('ld');}
@@ -1294,7 +772,7 @@ function setLang(l){
   var cur=null,tick=false;
   function update(){
     tick=false;
-    var nav=document.querySelector('#body-pt[hidden]')?document.querySelector('#body-en .daynav'):document.querySelector('#body-pt .daynav');
+    var nav=document.querySelector('.daynav');
     var navH=nav?nav.offsetHeight:0;
     var y=window.scrollY+navH+8;
     var best=null;
@@ -1312,9 +790,9 @@ function setLang(l){
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
   window.addEventListener('load',update);
-  document.querySelectorAll('.langbar button').forEach(function(b){b.addEventListener('click',function(){cur=undefined;setTimeout(update,50)})});
   update();
 })();
 </script>
+
 </body>
 </html>
