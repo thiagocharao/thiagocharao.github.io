@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://charao.dev/side-quests/san-francisco/plan/">
+<meta name="description" content="The San Francisco week plan as it stood the morning I left, before the week had other ideas.">
+<meta property="og:title" content="San Francisco Week: the plan">
+<meta property="og:description" content="The plan as it stood the morning I left. What actually happened is a different page.">
+<meta property="og:image" content="https://charao.dev/side-quests/san-francisco/img/poster-illustrated.jpg">
+<meta name="robots" content="noindex">
+<title>San Francisco Week</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: a pocket timetable. Sticky day strip like a Muni line board, one day at a time, mono time rail on the left, a "now" marker while in SF. */
+:root{
+  --bg:#f3f5f6; --card:#ffffff; --fg:#1b2328; --muted:#5d6a72; --line:#d7dee2;
+  --accent:#c0392b; --accent-soft:#fbe7e3; --fog:#e6ecef; --event:#1f5f8b; --event-soft:#e2eef6; --go:#2f7a4f; --go-soft:#e3f2e8; --now:#b7791f; --now-soft:#fbf0d9;
+  --display:"Archivo Narrow","Arial Narrow",system-ui,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171a; --card:#1a2125; --fg:#e8edef; --muted:#9aa8b0; --line:#2b353b;
+  --accent:#ff6b55; --accent-soft:#3a201c; --fog:#1f282d; --event:#7bb8e3; --event-soft:#182a36; --go:#79c99a; --go-soft:#16291e; --now:#e2b457; --now-soft:#33281a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171a; --card:#1a2125; --fg:#e8edef; --muted:#9aa8b0; --line:#2b353b;
+  --accent:#ff6b55; --accent-soft:#3a201c; --fog:#1f282d; --event:#7bb8e3; --event-soft:#182a36; --go:#79c99a; --go-soft:#16291e; --now:#e2b457; --now-soft:#33281a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 48px}
+header.top{display:grid;gap:6px;padding-bottom:14px}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0;font-size:15px}
+.strip{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px 8px;border-bottom:1px solid var(--line);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px))}
+.days{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{flex:0 0 auto;font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:6px 10px;display:grid;justify-items:center;min-width:58px}
+.days button .d{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.1}
+.days button .w{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.days button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.days button[aria-selected="true"] .w{color:var(--bg);opacity:.8}
+.days button.today{border-color:var(--now)}
+.days button.today::after{content:"today";font-family:var(--mono);font-size:9px;color:var(--now);text-transform:uppercase}
+.days button[aria-selected="true"].today::after{color:var(--bg)}
+.nextbar{display:none;margin-top:8px;padding:7px 10px;border-radius:8px;background:var(--now-soft);color:var(--fg);font-size:14px}
+.nextbar.show{display:block}
+.nextbar b{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--now);margin-right:6px}
+.days button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.dayhead{display:grid;gap:4px;padding-block:18px 8px}
+.dayhead h2{font-family:var(--display);font-size:28px;margin:0;line-height:1.1;text-wrap:balance}
+.dayhead p{margin:0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tag{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:999px;background:var(--fog);color:var(--muted)}
+.tzline{font-family:var(--mono);font-size:12px;color:var(--now);margin-top:4px}
+.check{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--card);border:1px dashed var(--line)}
+.check b{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
+.check ul{margin:0;padding-left:18px;display:grid;gap:3px;font-size:15px}
+ol.tl{list-style:none;margin:8px 0 0;padding:0;display:grid}
+.tl li{display:grid;grid-template-columns:64px 1fr;gap:12px;padding-block:12px;border-top:1px solid var(--line);position:relative}
+.tl li:first-child{border-top:0}
+.tl li.now{background:var(--now-soft);margin-inline:-10px;padding-inline:10px;border-radius:10px;border-top-color:transparent}
+.tl li.now + li{border-top-color:transparent}
+.tl li.past{opacity:.55}
+.t{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums;display:grid;gap:2px}
+.t small{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:var(--now)}
+.it{min-width:0;display:grid;gap:3px}
+.it h3{margin:0;font-size:16.5px;font-weight:700;line-height:1.3}
+.it p{margin:0;color:var(--muted);font-size:15px}
+.kinds{display:flex;gap:6px;flex-wrap:wrap}
+.kind{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:6px}
+.k-eat{background:var(--accent-soft);color:var(--accent)}
+.k-event{background:var(--event-soft);color:var(--event)}
+.k-move{background:var(--go-soft);color:var(--go)}
+.k-see,.k-travel{background:var(--fog);color:var(--muted)}
+.k-now{background:var(--now);color:var(--bg)}
+.links{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:2px}
+.links a{color:var(--event);font-size:14px;font-weight:600;text-decoration:none}
+.links a:hover{text-decoration:underline}
+.alts{margin:4px 0 0;padding:8px 10px;border-radius:8px;background:var(--fog);font-size:14px;color:var(--fg)}
+.alts b{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px}
+.alts a{color:inherit}
+section.ref{margin-top:34px;display:grid;gap:12px}
+section.ref h2{font-family:var(--display);font-size:24px;margin:14px 0 0}
+section.ref h2:first-child{margin-top:0}
+section.ref p.lead{margin:-4px 0 0;color:var(--muted);font-size:15px}
+.routes.lists{margin-top:4px}
+.box li b{font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:6px;min-width:0;align-content:start}
+.box h3{margin:0;font-size:15px;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.box ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.box li{font-size:15px}
+.box a{color:inherit}
+.code{font-family:var(--mono);font-size:13.5px;background:var(--fog);padding:1px 6px;border-radius:5px;user-select:all;word-break:break-all}
+.price{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.routes{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.routes a{font-size:13.5px;font-weight:600;text-decoration:none;color:var(--event);background:var(--event-soft);padding:6px 11px;border-radius:999px}
+footer{margin-top:28px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:no-preference){.day{animation:in .18s ease-out}@keyframes in{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="kicker">Mon 26 Oct to Sun 1 Nov 2026</div>
+    <h1>San Francisco Week</h1>
+    <p class="sub">Base: Cow Hollow Inn, 2190 Lombard St. All times are San Francisco time unless marked Lisbon. Lisbon is 7 hours ahead all week.</p>
+  </header>
+
+  <div class="check" style="margin:0 0 8px;border-style:solid;background:var(--now-soft)"><b>Frozen on 26 Oct 2026</b>
+    <ul style="list-style:none;padding:0"><li>This is the plan as it stood the morning I left: Clarissa's first draft, refined with my travel assistant over a weekend. Nothing here has been updated since. For what actually happened, read <a href="../" style="color:var(--accent);font-weight:700">I Left My Feet in San Francisco</a>. Booking references and personal documents were removed before publishing.</li></ul></div>
+  <div class="strip">
+    <div class="days" id="days" role="tablist" aria-label="Trip days"></div>
+    <div class="nextbar" id="nextbar"></div>
+  </div>
+
+  <main id="day"></main>
+
+  <section class="ref" id="ref">
+    <h2>Your Google Maps lists</h2>
+    <p class="lead">Nine lists, every pin has a note: what to order, which day it fits, or who the gift is for. Open one and it sits on the map around you.</p>
+    <div class="routes lists">
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sS3v7Vppi3XGB0wo3Rfodyg!3e3" target="_blank" rel="noopener">Planned meals, by day · 16</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2s_RejaI7LIuT23XLgaSfFag!3e3" target="_blank" rel="noopener">Local favourites · 27</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sZrkSJozSdfHcjcxo4ZZnvg!3e3" target="_blank" rel="noopener">Quick bites &amp; sweets · 16</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sHsEOc2Buqi3DowZ60IlZ0g!3e3" target="_blank" rel="noopener">Drinks · 11</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2so_g0CpM9uXJk8leUSsWPJQ!3e3" target="_blank" rel="noopener">Breakfast &amp; coffee · 10</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sj8nBBBsufru3l7mmDOD88w!3e3" target="_blank" rel="noopener">See &amp; do · 31</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2szQ0aHzLrSTOPWTUnjrbXzQ!3e3" target="_blank" rel="noopener">Shopping &amp; gifts · 13</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sj5oo-fV66_SzUsO_B6lz1w!3e3" target="_blank" rel="noopener">Trip essentials · 9</a>
+      <a href="https://www.google.com/maps/@37.78,-122.42,13z/data=!4m6!1m2!10m1!1e1!11m2!2sLmpMtO_1mtgi-92IgIO3sg!3e3" target="_blank" rel="noopener">Be careful at night · 5</a>
+    </div>
+
+    <h2>Eat and drink, by area</h2>
+    <p class="lead">Chosen to match what you save at home: counters, steak, sandwiches, sushi, serious coffee, bars behind doors. Rated 4.3 or better on Google unless it is an institution. Book means book.</p>
+    <div class="grid">
+      <div class="box"><h3>Walking distance: Marina and Cow Hollow</h3><ul>
+        <li><a href="#" data-q="Zushi Puzzle 1910 Lombard St San Francisco">Zushi Puzzle</a>, tiny sushi bar 5 min away. Sit at the counter, let the chef choose <span class="price">$$$ · book</span></li>
+        <li><a href="#" data-q="The Brazen Head 3166 Buchanan St San Francisco">The Brazen Head</a>, pub steakhouse, no sign on the door, Wednesday's dinner <span class="price">$$$ · open late</span></li>
+        <li><a href="#" data-q="Bobo's 1450 Lombard St San Francisco">Bobo's</a>, dry-aged steak in a small room, 10 min <span class="price">$$$</span></li>
+        <li><a href="#" data-q="A16 2355 Chestnut St San Francisco">A16</a>, Southern Italian with a serious wine list, a Marina favourite for 20 years <span class="price">$$$</span></li>
+        <li><a href="#" data-q="Flores 2030 Union St San Francisco">Flores</a>, modern Mexican, tacos and margaritas, next to Palm House <span class="price">$$</span></li>
+        <li><a href="#" data-q="Causwells 2346 Chestnut St San Francisco">Causwells</a>, neighbourhood bistro, the cheeseburger <span class="price">$$</span></li>
+        <li><a href="#" data-q="Pizzeria Delfina 2406 California St San Francisco">Pizzeria Delfina</a>, pizza locals rate among the best, 15 min uphill <span class="price">$$</span></li>
+        <li><a href="#" data-q="Lucca Delicatessen 2120 Chestnut St San Francisco">Lucca Delicatessen</a>, old Italian deli, build a sandwich on dutch crunch <span class="price">$ · lunch</span></li>
+        <li><a href="#" data-q="Super Duper Burgers 2304 Chestnut St San Francisco">Super Duper</a>, local burger chain, mini burger and garlic fries for a tired night <span class="price">$</span></li>
+        <li><a href="#" data-q="Greens Restaurant Fort Mason San Francisco">Greens</a>, vegetarian institution inside Fort Mason with the bridge view, lunch on Universe days <span class="price">$$</span></li>
+        <li>Already in the plan: <a href="#" data-q="Casaro Osteria 2136 Union St San Francisco">Casaro</a>, <a href="#" data-q="Milos Taverna 1787 Union St San Francisco">Milos</a> (Greek, closed Mon), <a href="#" data-q="Camino Alto 1715 Union St San Francisco">Camino Alto</a>, <a href="#" data-q="Rose's Cafe 2298 Union St San Francisco">Rose's</a>, <a href="#" data-q="Perry's on Union 1944 Union St San Francisco">Perry's</a></li>
+        <li>Drinks: <a href="#" data-q="Palm House 2032 Union St San Francisco">Palm House</a>, tropical, lively (closed Mon) · <a href="#" data-q="Left Door 1905 Union St San Francisco">Left Door</a>, dark and quiet</li>
+      </ul></div>
+
+      <div class="box"><h3>Van Ness, Polk and Russian Hill: 10 min by Lyft</h3><ul>
+        <li><a href="#" data-q="House of Prime Rib 1906 Van Ness Ave San Francisco">House of Prime Rib</a>, carved at the table from silver carts, salad tossed in front of you, Yorkshire pudding. A city institution <span class="price">$$$ · call (415) 885-4605</span></li>
+        <li><a href="#" data-q="Harris' Restaurant 2100 Van Ness Ave San Francisco">Harris'</a>, the classic SF steakhouse, dry-aged beef, martinis, jazz in the bar <span class="price">$$$$ · book</span></li>
+        <li><a href="#" data-q="Swan Oyster Depot 1517 Polk St San Francisco">Swan Oyster Depot</a>, counter seafood bar since 1912, Dungeness crab and oysters. Lunch only, queue early, bring cash <span class="price">$$</span></li>
+        <li><a href="#" data-q="The Boys Deli Polk St San Francisco">The Boys' Deli</a>, rotisserie chicken sandwich at a counter inside a market <span class="price">$ · lunch</span></li>
+        <li><a href="#" data-q="Saint Frank Coffee 2340 Polk St San Francisco">Saint Frank</a>, serious coffee on the way to the cable car</li>
+        <li><a href="#" data-q="Swensen's Ice Cream Hyde St San Francisco">Swensen's</a>, 1948 ice cream parlour on the cable car line at Hyde and Union <span class="price">$</span></li>
+        <li>Drinks: <a href="#" data-q="Buena Vista Cafe 2765 Hyde St San Francisco">The Buena Vista</a>, where Irish coffee took off in the US, at the cable car turnaround. Thursday before you ride</li>
+      </ul></div>
+
+      <div class="box"><h3>North Beach, Chinatown and the waterfront</h3><ul>
+        <li><a href="#" data-q="Sotto Mare 552 Green St San Francisco">Sotto Mare</a>, the cioppino, Thursday's dinner <span class="price">$$ · no bookings</span></li>
+        <li><a href="#" data-q="Tony's Pizza Napoletana 1570 Stockton St San Francisco">Tony's Pizza Napoletana</a>, run by a world pizza champion, margherita or the Detroit square <span class="price">$$ · go early</span></li>
+        <li><a href="#" data-q="Golden Boy Pizza 542 Green St San Francisco">Golden Boy</a>, focaccia slices, clam and garlic, standing room <span class="price">$</span></li>
+        <li><a href="#" data-q="Original Joe's 601 Union St San Francisco">Original Joe's</a>, red booths on Washington Square, Italian-American since 1937 <span class="price">$$$</span></li>
+        <li><a href="#" data-q="Molinari Delicatessen 373 Columbus Ave San Francisco">Molinari</a>, deli since 1896, take a number, house combo sandwich <span class="price">$ · lunch</span></li>
+        <li><a href="#" data-q="Tadich Grill 240 California St San Francisco">Tadich Grill</a>, oldest restaurant in California, sit at the counter, cioppino or sand dabs <span class="price">$$$</span></li>
+        <li><a href="#" data-q="Kokkari Estiatorio 200 Jackson St San Francisco">Kokkari</a>, upscale Greek with a fireplace, lamb chops and octopus <span class="price">$$$$ · book</span></li>
+        <li><a href="#" data-q="Hog Island Oyster Co Ferry Building San Francisco">Hog Island Oyster Co.</a>, oysters and chowder facing the Bay Bridge, Ferry Building <span class="price">$$</span></li>
+        <li><a href="#" data-q="Good Mong Kok Bakery 1039 Stockton St San Francisco">Good Mong Kok</a>, takeaway dim sum where Chinatown queues, cash <span class="price">$</span></li>
+        <li><a href="#" data-q="R & G Lounge Kearny St San Francisco">R &amp; G Lounge</a>, salt and pepper Dungeness crab, better with company <span class="price">$$$</span></li>
+        <li>Drinks: <a href="#" data-q="Comstock Saloon 155 Columbus Ave San Francisco">Comstock Saloon</a>, 1907, cocktails done properly · <a href="#" data-q="Vesuvio Cafe 255 Columbus Ave San Francisco">Vesuvio</a>, Beat bar beside City Lights · <a href="#" data-q="Specs Twelve Adler Museum Cafe San Francisco">Specs'</a>, dive bar down the alley opposite, cash</li>
+      </ul></div>
+
+      <div class="box"><h3>Downtown and SoMa: by day, or Lyft door to door</h3><ul>
+        <li><a href="#" data-q="Smish Smash Saluhall San Francisco">Smish Smash</a>, the Bay Area's smash burger, a counter in the Saluhall food hall on Market St <span class="price">$ · lunch</span></li>
+        <li><a href="#" data-q="Deli Board 1058 Folsom St San Francisco">Deli Board</a>, huge pastrami sandwiches, approach from Folsom, not 6th St <span class="price">$$ · lunch</span></li>
+        <li><a href="#" data-q="Saigon Sandwich 560 Larkin St San Francisco">Saigon Sandwich</a>, tiny bánh mì counter, Tenderloin edge <span class="price">$ · day only</span></li>
+        <li><a href="#" data-q="Brenda's French Soul Food Polk St San Francisco">Brenda's</a>, New Orleans brunch, beignets, shrimp and grits <span class="price">$$ · Lyft</span></li>
+        <li><a href="#" data-q="Mensho Tokyo SF">Mensho Tokyo</a>, chicken paitan ramen, one of the best bowls in the city <span class="price">$$ · Lyft</span></li>
+        <li><a href="#" data-q="Marufuku Ramen Japantown San Francisco">Marufuku</a>, Hakata tonkotsu in Japantown, a line that moves <span class="price">$$</span></li>
+        <li><a href="#" data-q="Liholiho Yacht Club San Francisco">Liholiho Yacht Club</a>, Hawaiian-inspired, loud and fun <span class="price">$$$$ · book</span></li>
+        <li><a href="#" data-q="Sightglass Coffee 270 7th St San Francisco">Sightglass</a>, big airy SoMa roastery</li>
+        <li>Drinks: <a href="#" data-q="Bourbon & Branch 501 Jones St San Francisco">Bourbon &amp; Branch</a>, Prohibition speakeasy behind an unmarked door, your Blind Pony here. Book online to get the password, Lyft to the door · <a href="#" data-q="Pacific Cocktail Haven 580 Sutter St San Francisco">Pacific Cocktail Haven</a>, inventive, small, near Union Square</li>
+      </ul></div>
+
+      <div class="box"><h3>The Mission and the west side: Lyft</h3><ul>
+        <li><a href="#" data-q="La Taqueria 2889 Mission St San Francisco">La Taqueria</a>, the Mission burrito, carnitas, ask for it dorado <span class="price">$</span></li>
+        <li><a href="#" data-q="Taqueria El Farolito 2779 Mission St San Francisco">El Farolito</a>, the other great burrito, open late <span class="price">$</span></li>
+        <li><a href="#" data-q="Tartine Bakery 600 Guerrero St San Francisco">Tartine</a>, morning bun and the country bread, go early <span class="price">$</span></li>
+        <li><a href="#" data-q="Bi-Rite Creamery 3692 18th St San Francisco">Bi-Rite Creamery</a>, salted caramel, eat it in Dolores Park · <a href="#" data-q="Mitchell's Ice Cream 688 San Jose Ave San Francisco">Mitchell's</a>, since 1953, ube and mango <span class="price">$</span></li>
+        <li><a href="#" data-q="Lolinda 2518 Mission St San Francisco">Lolinda</a>, Argentine steakhouse with a rooftop bar <span class="price">$$$</span></li>
+        <li><a href="#" data-q="Foreign Cinema 2534 Mission St San Francisco">Foreign Cinema</a>, courtyard dinner with a film on the wall <span class="price">$$$ · book</span></li>
+        <li><a href="#" data-q="Zuni Cafe 1658 Market St San Francisco">Zuni Café</a>, the roast chicken for two takes an hour, order it first <span class="price">$$$$ · book</span></li>
+        <li><a href="#" data-q="Nopa 560 Divisadero St San Francisco">Nopa</a>, where locals go for dinner, wood-fired, bar seats without a booking <span class="price">$$$</span></li>
+        <li><a href="#" data-q="Burma Superstar 309 Clement St San Francisco">Burma Superstar</a>, tea leaf salad, Inner Richmond <span class="price">$$ · wait</span></li>
+        <li><a href="#" data-q="Zazie 941 Cole St San Francisco">Zazie</a>, Cole Valley brunch, gingerbread pancakes <span class="price">$$</span></li>
+        <li><a href="#" data-q="Thanh Long 4101 Judah St San Francisco">Thanh Long</a>, roast Dungeness crab and garlic noodles, an SF signature <span class="price">$$$$ · book</span></li>
+        <li><a href="#" data-q="Palm City Judah St San Francisco">Palm City</a> hoagies and <a href="#" data-q="Andytown Coffee Roasters Lawton St San Francisco">Andytown</a> coffee by Ocean Beach, pair with Lands End <span class="price">$</span></li>
+        <li>Drinks: <a href="#" data-q="Trick Dog 3010 20th St San Francisco">Trick Dog</a>, menu changes theme each season · <a href="#" data-q="Smuggler's Cove 650 Gough St San Francisco">Smuggler's Cove</a>, world-famous tiki bar, three floors of rum, go early · <a href="#" data-q="Toronado 547 Haight St San Francisco">Toronado</a>, legendary beer bar, cash</li>
+      </ul></div>
+    </div>
+
+    <h2>Shopping and gifts</h2>
+    <p class="lead">Carry-on only, 10 kg. Keep it small and light, ceramics in the middle of the bag.</p>
+    <div class="grid">
+      <div class="box"><h3>For Whisky</h3><ul>
+        <li><a href="#" data-q="MISHKA Luxury Dog Boutique 2124 Union St San Francisco">MISHKA</a>, dog boutique on Union St, 5 min, rated 4.9. Collars, harnesses, toys, SF-themed bits</li>
+        <li><a href="#" data-q="Bow Wow Meow SF 2150 Polk St">Bow Wow Meow</a>, Polk St, on the way to the cable car</li>
+        <li><a href="#" data-q="Jeffrey's Natural Pet Foods North Beach">Jeffrey's</a>, local pet shop in North Beach</li>
+        <li>Toys and gear only. Meat and dairy treats are not allowed into the EU, even sealed.</li>
+      </ul></div>
+      <div class="box"><h3>For Clarissa</h3><ul>
+        <li><a href="#" data-q="Le Labo 2238 Fillmore St San Francisco">Le Labo</a>, Fillmore St, 15 min. They print a label with her name on the bottle</li>
+        <li><a href="#" data-q="Heath Ceramics Ferry Building">Heath Ceramics</a>, Ferry Building, the Bay Area's ceramics. A mug travels</li>
+        <li><a href="#" data-q="Recchiuti Confections Ferry Building">Recchiuti</a>, Ferry Building, the city's chocolatier · <a href="#" data-q="Dandelion Chocolate 740 Valencia St">Dandelion</a>, bean-to-bar, Mission · <a href="#" data-q="See's Candies 542 Market St San Francisco">See's Candies</a>, the Californian classic, cheap and loved</li>
+        <li><a href="#" data-q="SEPHORA 2083 Union St San Francisco">Sephora</a> and <a href="#" data-q="lululemon 1981 Union St San Francisco">Lululemon</a>, Union St, 5 min. US-only brands, and Lululemon is cheaper here. Check Sephora prices against Primor first</li>
+        <li><a href="#" data-q="Book Passage Ferry Building">Book Passage</a>, Ferry Building, a San Francisco book or notebook</li>
+        <li><a href="#" data-q="Ghirardelli Chocolate Experience Ghirardelli Square">Ghirardelli</a>, touristy but classic, by the cable car turnaround</li>
+      </ul></div>
+      <div class="box"><h3>For you, and the rules</h3><ul>
+        <li><a href="#" data-q="Golden State Shop Chase Center">Golden State Shop</a>, the Warriors store at Chase Center. Go before Friday's tip-off, it is packed after</li>
+        <li>Universe merch is at the badge party on Tuesday, before Wednesday's crowd</li>
+        <li>Saturday morning covers three gift stops in one building: Heath, Recchiuti, Book Passage</li>
+        <li>Back into the EU: €430 of goods per traveller before you have to declare. No meat, dairy or fresh produce in the bag</li>
+      </ul></div>
+    </div>
+
+    <h2>Street smarts</h2>
+    <div class="grid">
+      <div class="box"><h3>Skip on foot</h3><ul>
+        <li><b>Tenderloin</b>, roughly Geary to Market and Van Ness to Mason: day and night. Open drug use and tents, not dangerous as such but grim. Brenda's, Saigon Sandwich, Mensho and Bourbon &amp; Branch sit on its edges: Lyft to the door</li>
+        <li><b>Civic Center and UN Plaza</b> after dark. City Hall is fine for a photo by day</li>
+        <li><b>Market St between 5th and 8th</b> after dark, and <b>6th St south of Market</b> at any hour</li>
+        <li><b>16th St Mission BART plaza</b> late. The Mission bars are fine, take a Lyft home from the bar</li>
+        <li>Walking through <b>SoMa</b> from Chase Center at night: take a Lyft instead</li>
+      </ul></div>
+      <div class="box"><h3>Fine at night</h3><ul>
+        <li>Marina, Cow Hollow, Union and Chestnut St, Russian Hill, North Beach, the Embarcadero, Hayes Valley</li>
+        <li>Mission Bay around the arena before and after the game, with the crowd</li>
+        <li>Fisherman's Wharf is touristy, not risky</li>
+      </ul></div>
+      <div class="box"><h3>Habits</h3><ul>
+        <li>Car break-ins are the city's crime. Nothing visible in a Lyft or any car, not even a jacket</li>
+        <li>Phone in the pocket at kerbs and BART exits, snatching happens from bikes</li>
+        <li>Someone asking for money: a no and keep walking. Do not stop to argue</li>
+        <li>Carry a few dollars in cash for counters, Specs' and Toronado</li>
+        <li>Emergency: 911</li>
+      </ul></div>
+    </div>
+
+    <h2>Spare time bank</h2>
+    <div class="grid">
+      <div class="box"><h3>Long walks</h3><ul>
+        <li><a href="#" data-q="Lands End Lookout San Francisco">Lands End and Sutro Baths</a>, coastal trail, about 5 km loop, best bridge view in the city. Bus 38R then a walk, or Lyft 20 min. Andytown coffee and a Palm City hoagie are 10 min south.</li>
+        <li><a href="#" data-q="Presidio Tunnel Tops San Francisco">Presidio Tunnel Tops to Crissy Field</a>, 40 min from the hotel, flat, bridge straight ahead.</li>
+        <li><a href="#" data-q="Twin Peaks San Francisco">Twin Peaks at sunset</a>, whole city below. Lyft up, walk down into the Castro.</li>
+        <li><a href="#" data-q="Golden Gate Park San Francisco">Golden Gate Park</a>, Japanese Tea Garden and the de Young tower (free view, no ticket). Half a day.</li>
+      </ul></div>
+      <div class="box"><h3>Neighbourhood wanders</h3><ul>
+        <li><a href="#" data-q="Clarion Alley San Francisco">Mission murals</a>, Clarion Alley and Balmy Alley, then Dolores Park with a Bi-Rite cone. Bus 22 from Fillmore and Lombard. Daytime.</li>
+        <li><a href="#" data-q="Pacific Heights San Francisco">Pacific Heights Halloween houses</a>, decorated mansions a 15 min walk uphill from the hotel. Good for an evening after Universe. Lyon St steps for the view.</li>
+        <li><a href="#" data-q="Haight-Ashbury San Francisco">Haight-Ashbury</a>, 60s counterculture streets, Amoeba Music, then Toronado for a beer. Bus 43 from Lombard.</li>
+        <li><a href="#" data-q="Lombard Street crooked block San Francisco">Lombard's crooked block</a>, same street as the hotel, 20 min walk east. Swensen's is two blocks away.</li>
+      </ul></div>
+      <div class="box"><h3>Train</h3><ul>
+        <li><a href="#" data-q="Crunch Fitness 2324 Chestnut St San Francisco">Crunch Fitness, Chestnut St</a>, day pass, 5:30 to 22:30. 5 min walk. Ask about rowers at the desk.</li>
+        <li><a href="#" data-q="National Fitness Campaign 180 Marina Blvd San Francisco">Marina Green fitness court</a>, outdoor bodyweight rig, free, 24h.</li>
+        <li>Run: Marina Green to Fort Point under the bridge and back, about 8 km, flat, on the water the whole way.</li>
+        <li>Longer: add the Presidio Tunnel Tops loop for 12 km with one climb.</li>
+      </ul></div>
+    </div>
+
+    <h2>Keep handy</h2>
+    <div class="grid">
+      <div class="box"><h3>Getting around</h3><ul>
+        <li>Clipper in Apple Wallet. Muni $2.75, free transfers for 2h. Ferries take Clipper too.</li>
+        <li>From the hotel: 30 and 43 to North Beach, Chinatown, downtown. 28 to the Golden Gate Bridge. 22 to the Mission.</li>
+        <li>Fort Mason is a flat 15 min walk along Marina Blvd.</li>
+        <li>Waymo works in the city if you want to try a driverless taxi once.</li>
+      </ul></div>
+      <div class="box"><h3>Weather and habits</h3><ul>
+        <li>Forecast for your week: highs 16 to 18°C, lows 11 to 12, dry until Saturday (45% chance of rain). Fog early, sun by noon, cold wind by 18:00. Layers and a windproof.</li>
+        <li>Sunset around 18:15.</li>
+        <li>Tip 18 to 20% at sit-down places. Menu prices are before tax (about 8.6%).</li>
+        <li>Keep the old passport with the visa in the same pocket as the new one, always.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <footer>Built from your bookings, the Universe portal, your agenda and your Google Maps lists as of 26 Oct. Opening hours change, so check a place before a long trip there.</footer>
+</div>
+
+<script>
+const M = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+const DAYS = [
+ {id:"mon", d:"26", w:"Mon", date:"2026-10-26", title:"Arrive and land softly",
+  sum:"Long travel day. Keep the evening short and walkable, and get to bed early to reset the clock.",
+  tags:["Travel","Marina"],
+  check:{title:"Before you leave tonight", items:["Both passports in the same pocket: the new one, and the old one with the visa","Boarding passes printed","Carry-on weighed, 10 kg max","Clipper added to Apple Wallet, about $25 loaded","US eSIM installed, switch it on at SFO","Offline copy of this plan. Universe needs no QR, only a passport","Chargers, US plug adapter, layers, windproof","Alarm 02:40 Lisbon time, leave home 03:10"]},
+  items:[
+   {t:"03:30", tz:"Lisbon", k:"travel", h:"Porto airport: straight to security", p:"Boarding pass already printed, so no desk. Boards 04:10, gate closes 04:35."},
+   {t:"06:00", tz:"Lisbon", k:"travel", h:"Lisbon: straight to Connections", p:"Boarding pass already in hand, so no desk. Follow Connections (Ligações) to passport control. Keep the old passport with the visa ready for the gate check."},
+   {t:"07:15", tz:"Lisbon", k:"travel", h:"Passport control: leaving Schengen", p:"Non-EU lane. Mornings can take 20 to 45 minutes. Breakfast after, airside. Gate N: boarding 08:40, gate closes 09:15. US flights often add a document check at the gate."},
+   {t:"09:40", tz:"Lisbon", k:"travel", h:"Lisbon to San Francisco, TP237", p:"TAP moved it from 09:55 to 09:40. About 12 hours 45 minutes. Window seat. Sleep in the first half, after the meal, while it's night in San Francisco, then stay awake for the rest so you're ready for bed around 21:00 local."},
+   {t:"15:25", k:"travel", h:"Land at SFO, immigration", p:"15:25 on TAP's current schedule. Visitor lanes at immigration, plan 30 to 75 minutes. CBP answer: GitHub Universe, five nights at Cow Hollow Inn, flying back on the 31st. No form to fill, the I-94 is electronic. While taxiing, switch on the US eSIM."},
+   {t:"17:00", k:"travel", h:"To the hotel", p:"Rideshare from Level 5, domestic garage, about 40 min and $45. Or BART to Civic Center, then the 49 bus north to Van Ness and Lombard, about 75 min and $14.", q:"Cow Hollow Inn and Suites 2190 Lombard St San Francisco", qlabel:"Hotel"},
+   {t:"18:00", k:"move", h:"Sunset walk: Palace of Fine Arts to Marina Green", p:"10 min from the hotel. Lagoon, rotunda, then the water with the bridge to the west. Daylight is the best jet lag medicine.", q:"Palace of Fine Arts San Francisco"},
+   {t:"19:15", k:"eat", h:"Easy dinner on Union St", p:"Casaro Osteria for pizza and pasta, 5 min walk. Perry's for a burger at a long bar, or A16 on Chestnut for Southern Italian. Milos and Palm House are closed on Mondays.", q:"Casaro Osteria 2136 Union St San Francisco", alts:[["Perry's on Union","Perry's on Union 1944 Union St San Francisco"],["A16","A16 2355 Chestnut St San Francisco"]]},
+   {t:"21:00", k:"see", h:"Lights out", p:"Day one decides the week. Morning light tomorrow, no screens late."}
+  ]},
+ {id:"tue", d:"27", w:"Tue", date:"2026-10-27", title:"The classic city day",
+  sum:"Gym on Polk, Lombard's crooked block, the bridge on foot, ferry back, then North Beach, Chinatown and a cable car across town to House of Prime Rib. Badge after dinner. Reception skipped.",
+  tags:["Golden Gate","Sausalito","North Beach","Chinatown","Cable car","Prime Rib"],
+  items:[
+   {t:"06:45", k:"move", h:"Train at Crunch Polk St", p:"The Signature club in the old Alhambra Theatre, $35 day pass. Bus 45 along Union St. Saint Frank Coffee is next door.", q:"Crunch Fitness 2330 Polk St San Francisco", alts:[["Saint Frank Coffee","Saint Frank Coffee 2340 Polk St San Francisco"]]},
+   {t:"08:45", k:"see", h:"Lombard's crooked block", p:"Up Polk to Hyde and Lombard for the view down the curves, then down the steps beside them. Lyft back to the hotel.", q:"Lombard Street crooked block San Francisco"},
+   {t:"09:30", k:"eat", h:"Breakfast at Lucca Delicatessen", p:"Roast beef on a dutch crunch roll. Coffee at Coffee Roastery, shower at the hotel.", q:"Lucca Delicatessen 2120 Chestnut St San Francisco"},
+   {t:"10:45", k:"move", h:"Bus 28 to the bridge, walk across", p:"28 westbound from Lombard to the Golden Gate Bridge Toll Plaza, 15 min. East walkway across, about 45 min.", q:"Golden Gate Bridge Welcome Center"},
+   {t:"12:30", k:"see", h:"Battery Spencer, Lyft to Sausalito", p:"Lyft from Vista Point with a stop at Battery Spencer, then down to the ferry terminal.", q:"Battery Spencer Sausalito", alts:[["Sausalito ferry terminal","Sausalito Ferry Terminal"]]},
+   {t:"13:35", k:"travel", h:"Ferry Sausalito to the Ferry Building", p:"Golden Gate Ferry, tap Clipper at the gate, $8.50. Sit outside on the left for Alcatraz and the skyline. Next one after this is 15:35."},
+   {t:"14:05", k:"eat", h:"Light lunch at the Ferry Building", p:"Keep it light, prime rib at 17:00. Oysters and chowder at Hog Island, or a burger at Gott's.", q:"Hog Island Oyster Co Ferry Building San Francisco", alts:[["Gott's Ferry Building","Gott's Roadside Ferry Building San Francisco"]]},
+   {t:"14:45", k:"see", h:"Coit Tower, the easy way up", p:"Lyft or the 39 bus to the top, skip the Filbert Steps today. 360 view, murals inside, paid lift to the top.", q:"Coit Tower San Francisco"},
+   {t:"15:30", k:"see", h:"Down through North Beach", p:"All downhill: Washington Square, City Lights on Columbus, an espresso at an Italian café. Vesuvio is next to City Lights.", q:"City Lights Booksellers San Francisco", alts:[["Washington Square","Washington Square Park San Francisco"],["Vesuvio","Vesuvio Cafe 255 Columbus Ave San Francisco"]]},
+   {t:"16:15", k:"see", h:"Chinatown along Grant Ave", p:"Mostly flat. Dragon Gate at the south end, but stop at California St.", q:"Grant Ave and California St San Francisco"},
+   {t:"16:40", k:"move", h:"California St cable car to Van Ness", p:"Board at Grant and California, ride west over Nob Hill to the end of the line at Van Ness, about 15 min. Quieter than the Powell lines. Clipper works.", q:"California St and Van Ness Ave San Francisco"},
+   {t:"17:00", k:"eat", h:"Dinner: House of Prime Rib", p:"Two blocks north of the cable car stop. Be at the door at opening, ask for a seat at the bar. Carved at the table, salad, mash, Yorkshire pudding.", q:"House of Prime Rib 1906 Van Ness Ave San Francisco"},
+   {t:"18:30", k:"event", h:"Universe badge at Hotel Zephyr", p:"Lyft about 10 min. Badge party until 19:00, passport as ID, merch here.", q:"Hotel Zephyr 250 Beach St San Francisco"},
+   {t:"19:00", k:"see", h:"Irish coffee at The Buena Vista", p:"3 min walk from Zephyr, where Irish coffee took off in the US. Then Lyft home, early night before Universe.", q:"Buena Vista Cafe 2765 Hyde St San Francisco"}
+  ]},
+ {id:"wed", d:"28", w:"Wed", date:"2026-10-28", title:"Universe, day one",
+  sum:"Fort Mason Center all day. Lunch on site. Evening free near the hotel.",
+  tags:["GitHub Universe","Fort Mason"],
+  items:[
+   {t:"07:00", k:"move", h:"Short session", p:"45 min at Crunch, or an easy run to the bridge viewpoint and back. Keep it light, long day ahead."},
+   {t:"08:00", k:"eat", h:"Coffee on Chestnut St", p:"Coffee Roastery or Twisted St. Cafe, both open early. Breakfast is served at the venue too.", q:"Coffee Roastery 2331 Chestnut St San Francisco", alts:[["Twisted St. Cafe","Twisted St Cafe 2320 Lombard St San Francisco"]]},
+   {t:"08:25", k:"travel", h:"Walk to Fort Mason", p:"Flat 15 min via Marina Blvd. Badge already on you.", q:"Fort Mason Center 2 Marina Blvd San Francisco"},
+   {t:"09:00", k:"event", h:"Opening Keynote", p:"Main Stage standby line by 08:40. If it does not move, your booked seat in Cowell Theater shows the same keynote live on screen."},
+   {t:"10:15", k:"event", h:"Agentic Workflows: Automation at scale", p:"The Speakeasy @ GitHub Central, Festival Pavilion. Standby only, 10:15 to 10:45. Stay about 15 minutes. Repeats today 16:45 and Thu 09:05 if you want the rest."},
+   {t:"10:30", k:"event", h:"Agentic engineering past the pilot: an enterprise playbook", p:"Cowell Theater @ Gateway Pavilion, 10:30 to 11:10. Standby only. Nick Liffen and Philip Holleran. A few minutes' walk from the Festival Pavilion. Fallback: the Sandbox evals session is still in your agenda (10:30, Building C)."},
+   {t:"11:15", k:"event", h:"Humans set direction. Agents close the loop.", p:"Main Stage. Mario Rodriguez."},
+   {t:"11:50", k:"event", h:"Copilot and Windows: local models in the workflow", p:"Silent Disco Demos, Festival Pavilion."},
+   {t:"12:05", k:"eat", h:"Lunch on site", p:"45 minutes. Food and drinks run all day at the venue."},
+   {t:"12:50", k:"event", h:"The factory mindset: agentic workflows in production (optional)", p:"Main Stage. A colleague is covering this one and Main Stage sessions are recorded, so skip it if something better comes up: a longer lunch, GitHub Central, or a rest before the afternoon."},
+   {t:"13:50", k:"event", h:"Auth for agents: auth.md", p:"Silent Disco Demos."},
+   {t:"14:30", k:"event", h:"Beyond \"hours saved\": AMD and ING measure AI", p:"Cowell Theater."},
+   {t:"15:10", k:"event", h:"Reachability for vulnerability prioritisation", p:"Silent Disco Demos."},
+   {t:"15:30", k:"event", h:"Stop guessing: 100M pull requests and 150T tokens", p:"Silent Disco Demos. Standby option instead: the AI credits workshop, Gateway Pavilion Level 1, be there by 15:10."},
+   {t:"16:30", k:"event", h:"The human side of AI: 94% Copilot adoption", p:"BATS Theatre, Building B."},
+   {t:"17:30", k:"see", h:"Speaker after parties or home", p:"GitHub Central keeps going after sessions. Or walk back, shower, and rest an hour."},
+   {t:"19:00", k:"eat", h:"Dinner: The Brazen Head", p:"Dark wood pub steakhouse on Buchanan St, a few minutes from the hotel. No sign outside, that's the one. Proper reward after day one. If you got a House of Prime Rib table, that's tonight instead: 10 min by Lyft. Zushi Puzzle on Lombard if you'd rather sit at a sushi counter.", q:"The Brazen Head 3166 Buchanan St San Francisco", alts:[["House of Prime Rib","House of Prime Rib 1906 Van Ness Ave San Francisco"],["Zushi Puzzle","Zushi Puzzle 1910 Lombard St San Francisco"],["Milos Taverna (Greek)","Milos Taverna 1787 Union St San Francisco"]]},
+   {t:"21:00", k:"see", h:"Nightcap on Union St", p:"Palm House or Left Door, both 5 min from dinner. One drink, early night, day two is dense.", q:"Palm House 2032 Union St San Francisco"}
+  ]},
+ {id:"thu", d:"29", w:"Thu", date:"2026-10-29", title:"Universe, day two",
+  sum:"Conference until 15:00, then science after dark and seafood in North Beach.",
+  tags:["GitHub Universe","Gifts","Exploratorium","North Beach"],
+  items:[
+   {t:"07:00", k:"move", h:"Train", p:"Full session at Crunch, or the fitness court on Marina Green."},
+   {t:"08:15", k:"eat", h:"Breakfast", p:"Bluestone Lane on Steiner St (from 7:00) or Cracked & Battered (from 8:00).", q:"Bluestone Lane 3352 Steiner St San Francisco", alts:[["Cracked & Battered","Cracked and Battered Marina 2240 Chestnut St San Francisco"]]},
+   {t:"09:00", k:"event", h:"The view from the labs", p:"Main Stage. Anthropic, OpenAI, Google Cloud and GitHub on what's coming."},
+   {t:"09:35", k:"event", h:"When a prototype starts handling real payments, does your GitHub policy know?", p:"Silent Disco Demos."},
+   {t:"10:00", k:"event", h:"Write-only code: peer review when agents write the diffs", p:"Cowell Theater."},
+   {t:"11:00", k:"event", h:"Coinbase: AI, Actions and data residency", p:"Cowell Theater."},
+   {t:"12:05", k:"event", h:"Inside Copilot's model router", p:"Silent Disco Demos."},
+   {t:"12:25", k:"event", h:"Plugins and engines: extending Copilot live", p:"Silent Disco Demos. Quick lunch straight after."},
+   {t:"13:00", k:"event", h:"Treat your AI context as infrastructure", p:"Cowell Theater. The Levi Strauss Q&A runs at the same time in The Speakeasy if you prefer that."},
+   {t:"14:00", k:"event", h:"Closing Keynote", p:"Main Stage. Martin Woodward and Maggie Appleton. Seat booked."},
+   {t:"15:15", k:"see", h:"Gifts for Clarissa and Whisky", p:"Walk 15 min from Fort Mason to Union St. MISHKA for Whisky (toys and gear, no meat or dairy treats, EU rules), Sephora and Lululemon on the same street, then Le Labo on Fillmore, where they print her name on the label. Drop the bags at the hotel and take a Lyft to the Exploratorium around 17:35. Cable car already done on Tuesday.", q:"MISHKA Luxury Dog Boutique 2124 Union St San Francisco", alts:[["Le Labo","Le Labo 2238 Fillmore St San Francisco"],["Sephora Union St","SEPHORA 2083 Union St San Francisco"],["Lululemon Union St","lululemon 1981 Union St San Francisco"]]},
+   {t:"18:00", k:"see", h:"Exploratorium After Dark", p:"Pier 15, adults only, Thursdays 18:00 to 22:00, about $20. Hands-on science with a drink in hand. Bus 30 from the hotel or rideshare 15 min.", q:"Exploratorium Pier 15 San Francisco"},
+   {t:"20:00", k:"eat", h:"Dinner: Sotto Mare", p:"North Beach seafood, the cioppino is the order. 15 min walk from Pier 15. Busy, no reservations, a short wait is normal. If the wait is silly: Tony's for the pizza or Original Joe's for red booths, both on Washington Square.", q:"Sotto Mare 552 Green St San Francisco", alts:[["Tony's Pizza Napoletana","Tony's Pizza Napoletana 1570 Stockton St San Francisco"],["Original Joe's","Original Joe's 601 Union St San Francisco"],["Piccolo Forno","Piccolo Forno 725 Columbus Ave San Francisco"]]},
+   {t:"21:45", k:"see", h:"One for the road", p:"Comstock Saloon for a proper cocktail, Vesuvio next to City Lights for the Beat atmosphere, or Specs' down the alley opposite for a dive bar full of stories (cash). Bus 30 home from Columbus.", q:"Comstock Saloon San Francisco", alts:[["Vesuvio","Vesuvio Cafe 255 Columbus Ave San Francisco"],["Specs'","Specs Twelve Adler Museum Cafe San Francisco"]]}
+  ]},
+ {id:"fri", d:"30", w:"Fri", date:"2026-10-30", title:"Silicon Valley, then Warriors",
+  sum:"Caltrain down the Peninsula: Stanford, Palo Alto, the Computer History Museum. Back on the train straight to Chase Center.",
+  tags:["Stanford","Computer History Museum","Warriors vs Lakers"],
+  items:[
+   {t:"06:45", k:"move", h:"Short session", p:"Quick run or 30 min gym. Lots of walking today."},
+   {t:"07:30", k:"eat", h:"Grab-and-go breakfast", p:"Coffee Roastery opens 6:30, two blocks away."},
+   {t:"07:45", k:"travel", h:"To 4th & King Caltrain", p:"Rideshare about 20 min. Take the next Express to Palo Alto, under an hour, Clipper works. Check the timetable tonight.", q:"4th and King Caltrain Station San Francisco"},
+   {t:"09:15", k:"see", h:"Stanford campus", p:"From Palo Alto station up Palm Drive to the Oval, Main Quad, Memorial Church, Hoover Tower. Free, no booking. The Rodin sculpture garden by the Cantor is a nice detour.", q:"Stanford Main Quad", alts:[["Memorial Church","Stanford Memorial Church"],["Hoover Tower","Hoover Tower Stanford"],["Rodin Sculpture Garden","Rodin Sculpture Garden Stanford"]]},
+   {t:"11:45", k:"see", h:"HP Garage", p:"367 Addison Ave, the birthplace of Silicon Valley. Private house, outside only. 15 min walk from University Ave.", q:"HP Garage 367 Addison Ave Palo Alto"},
+   {t:"12:30", k:"eat", h:"Lunch on University Ave", p:"Marugame Udon for quick and great, Zingsters for comfort food, Local Union 271 if you want to sit down.", q:"Marugame Udon 383 University Ave Palo Alto", alts:[["Zingsters","Zingsters 220B University Ave Palo Alto"],["Local Union 271","Local Union 271 University Ave Palo Alto"]]},
+   {t:"13:30", k:"see", h:"Computer History Museum", p:"Mountain View, rideshare about 15 min. Open Wed to Sun, 10 to 17. Give it 2.5 hours. Buy tickets online.", q:"Computer History Museum 1401 N Shoreline Blvd Mountain View"},
+   {t:"16:15", k:"see", h:"Google Visitor Experience (optional)", p:"Next door. Store, cafe and campus views. Skip if the museum runs long.", q:"Google Visitor Experience Mountain View"},
+   {t:"16:45", k:"travel", h:"Caltrain Mountain View to 4th & King", p:"About an hour. From 4th & King it is a 15 min walk to Chase Center along the water.", q:"Mountain View Caltrain Station"},
+   {t:"18:00", k:"eat", h:"Pre-game food", p:"Gott's at Thrive City, next to the arena, or SPARK Social food trucks and beer garden five minutes away. Warriors gear: the Golden State Shop at the arena, before tip-off, it is packed after.", q:"Gott's 151 Warriors Way San Francisco", alts:[["SPARK Social","SPARK Social SF 601 Mission Bay Blvd North San Francisco"],["Golden State Shop","Golden State Shop Chase Center"]]},
+   {t:"19:00", k:"event", h:"Warriors vs Lakers", p:"Chase Center. Sec 222, Row 8, Seat 11. NBA Cup group game, Curry against Dončić. Mobile ticket in the Ticketmaster app, download it to Wallet before you leave the hotel.", q:"Chase Center San Francisco"},
+   {t:"21:45", k:"travel", h:"Home", p:"Rideshare from the pickup zone, about 20 min. Expect a surge right after the buzzer; walking 10 min away first usually halves it."}
+  ]},
+ {id:"sat", d:"31", w:"Sat", date:"2026-10-31", title:"Market morning, fly home",
+  sum:"Halloween in the city. Farmers market breakfast, pack, and an afternoon flight.",
+  tags:["Ferry Building","Halloween","Flight"],
+  items:[
+   {t:"07:30", k:"move", h:"Last run", p:"Marina Green to Fort Point, one more look at the bridge."},
+   {t:"09:00", k:"eat", h:"Ferry Plaza Farmers Market, and the last gifts", p:"Saturdays 8 to 14, the best one of the week. Breakfast from the stalls, the city already in costume. Bus 30 or rideshare. Gifts inside the building: Heath Ceramics, Recchiuti chocolate, Book Passage. Carry-on is 10 kg, keep it light.", q:"Ferry Plaza Farmers Market San Francisco", alts:[["Heath Ceramics","Heath Ceramics Ferry Building"],["Recchiuti","Recchiuti Confections Ferry Building"],["Book Passage","Book Passage Ferry Building"]]},
+   {t:"11:30", k:"travel", h:"Back to the hotel, pack, check out", p:"Weigh the carry-on: 10 kg limit on the Discount fare. Old passport in the same pocket as the new one."},
+   {t:"13:15", k:"travel", h:"Leave for SFO", p:"Rideshare about 40 min. Or BART from Civic Center. Be at the airport by 14:30, three hours before. No exit immigration in the US, only security. At check-in, ask for both boarding passes, Lisbon and Porto."},
+   {t:"17:35", k:"travel", h:"TP238 San Francisco to Lisbon", p:"Overnight. Lands Lisbon Sunday 11:30. Clocks in the US go back tonight, yours are already on winter time."}
+  ]},
+ {id:"sun", d:"1", w:"Sun", date:"2026-11-01", title:"Home", tz:"Lisbon",
+  sum:"Lisbon connection and home by mid-afternoon.",
+  tags:["Lisbon","Porto"],
+  items:[
+   {t:"11:30", tz:"Lisbon", k:"travel", h:"Land in Lisbon: passport control first", p:"Schengen entry happens here, and it's Lisbon's slow queue. Go straight to it, no stops. Non-EU lane. Then follow Connections to domestic departures. 2h30 is enough most days; if the queue eats it, TAP rebooks you on the next Lisbon to Porto, same ticket."},
+   {t:"14:00", tz:"Lisbon", k:"travel", h:"TP1928 Lisbon to Porto", p:"Arrives 15:00. Home for dinner, Monday reset intact."}
+  ]}
+];
+const KIND = {eat:"Eat",event:"Event",move:"Move",see:"See",travel:"Travel"};
+const GR=(l,m,s)=>({l,u:"https://www.google.com/maps/dir/?api=1&travelmode="+m+"&origin="+encodeURIComponent(s[0])+"&destination="+encodeURIComponent(s[s.length-1])+(s.length>2?"&waypoints="+encodeURIComponent(s.slice(1,-1).join("|")):"")});
+const HOTEL="Cow Hollow Inn and Suites, 2190 Lombard St, San Francisco";
+const ROUTES={
+ mon:[GR("SFO to the hotel","driving",["San Francisco International Airport",HOTEL]),GR("Evening walk and dinner","walking",[HOTEL,"Palace of Fine Arts, San Francisco","Marina Green, San Francisco","Casaro Osteria, 2136 Union St, San Francisco"])],
+ tue:[GR("Morning: gym to Lombard","walking",["Crunch Fitness, 2330 Polk St, San Francisco","Lombard St and Hyde St, San Francisco","Lombard St and Leavenworth St, San Francisco"]),GR("Bridge to Battery Spencer","walking",["Golden Gate Bridge Welcome Center","H. Dana Bowers Vista Point, Sausalito","Battery Spencer, Sausalito"]),GR("Ferry Building to Coit Tower","driving",["Ferry Building, San Francisco","Coit Tower, San Francisco"]),GR("North Beach to Chinatown","walking",["Coit Tower, San Francisco","Washington Square Park, San Francisco","City Lights Booksellers, San Francisco","Grant Ave and California St, San Francisco"]),GR("Cable car to Prime Rib","transit",["Grant Ave and California St, San Francisco","House of Prime Rib, 1906 Van Ness Ave, San Francisco"]),GR("Prime Rib to Zephyr and Buena Vista","driving",["House of Prime Rib, 1906 Van Ness Ave, San Francisco","Hotel Zephyr, 250 Beach St, San Francisco"]),GR("Home","driving",["The Buena Vista, 2765 Hyde St, San Francisco",HOTEL])],
+ wed:[GR("Morning: coffee to Fort Mason","walking",["Coffee Roastery, 2331 Chestnut St, San Francisco","Fort Mason Center, San Francisco"]),GR("Evening: dinner and nightcap","walking",[HOTEL,"The Brazen Head, 3166 Buchanan St, San Francisco","Palm House, 2032 Union St, San Francisco"])],
+ thu:[GR("Morning: breakfast to Fort Mason","walking",["Bluestone Lane, 3352 Steiner St, San Francisco","Fort Mason Center, San Francisco"]),GR("Afternoon: gift shopping","walking",["Fort Mason Center, San Francisco","MISHKA Luxury Dog Boutique, 2124 Union St, San Francisco","Le Labo, 2238 Fillmore St, San Francisco",HOTEL]),GR("To the Exploratorium","driving",[HOTEL,"Exploratorium, Pier 15, San Francisco"]),GR("Evening: Exploratorium to North Beach","walking",["Exploratorium, Pier 15, San Francisco","Sotto Mare, 552 Green St, San Francisco","Comstock Saloon, 155 Columbus Ave, San Francisco"])],
+ fri:[GR("Caltrain to Palo Alto","transit",["San Francisco 4th and King Caltrain Station","Palo Alto Caltrain Station"]),GR("Stanford and Palo Alto on foot","walking",["Palo Alto Caltrain Station","Stanford Main Quad","HP Garage, 367 Addison Ave, Palo Alto","Marugame Udon, 383 University Ave, Palo Alto"]),GR("To the Computer History Museum","driving",["Marugame Udon, 383 University Ave, Palo Alto","Computer History Museum, Mountain View"]),GR("Caltrain back to SF","transit",["Mountain View Caltrain Station","San Francisco 4th and King Caltrain Station"]),GR("Walk to Chase Center","walking",["San Francisco 4th and King Caltrain Station","Chase Center, San Francisco"])],
+ sat:[GR("To the farmers market","transit",[HOTEL,"Ferry Plaza Farmers Market, San Francisco"]),GR("To SFO","driving",[HOTEL,"San Francisco International Airport"])]
+};
+const daysEl = document.getElementById("days"), dayEl = document.getElementById("day"), nextbar = document.getElementById("nextbar");
+function sfNow(){
+  return {date:"",time:""};
+  try{
+    const f = new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});
+    const parts = Object.fromEntries(f.formatToParts(new Date()).map(p=>[p.type,p.value]));
+    return {date:`${parts.year}-${parts.month}-${parts.day}`, time:`${parts.hour==="24"?"00":parts.hour}:${parts.minute}`};
+  }catch(e){ return {date:"",time:""}; }
+}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+let current = null;
+function render(id){
+  const day = DAYS.find(x=>x.id===id) || DAYS[0];
+  current = day.id;
+  const now = sfNow();
+  const isToday = day.date===now.date;
+  let nowIdx = -1;
+  if(isToday){ day.items.forEach((it,i)=>{ if(!it.tz && it.t <= now.time) nowIdx = i; }); }
+  [...daysEl.children].forEach(b=>b.setAttribute("aria-selected", b.dataset.id===day.id ? "true":"false"));
+  const items = day.items.map((it,i)=>{
+    const link = it.q ? `<div class="links"><a href="${M(it.q)}" target="_blank" rel="noopener">Map${it.qlabel? ": "+esc(it.qlabel):""}</a></div>` : "";
+    const alts = it.alts ? `<div class="alts"><b>Alternatives</b>${it.alts.map(a=>`<a href="${M(a[1])}" target="_blank" rel="noopener">${esc(a[0])}</a>`).join(" · ")}</div>` : "";
+    const cls = isToday ? (i===nowIdx ? "now" : (i<nowIdx ? "past" : "")) : "";
+    const tz = it.tz ? `<small>${esc(it.tz)}</small>` : "";
+    const nowChip = i===nowIdx && isToday ? `<span class="kind k-now">Now</span>` : "";
+    return `<li class="${cls}"><div class="t">${it.t}${tz}</div><div class="it"><div class="kinds"><span class="kind k-${it.k}">${KIND[it.k]}</span>${nowChip}</div><h3>${esc(it.h)}</h3><p>${esc(it.p)}</p>${link}${alts}</div></li>`;
+  }).join("");
+  const check = day.check ? `<div class="check"><b>${esc(day.check.title)}</b><ul>${day.check.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>` : "";
+  const rts = ROUTES[day.id]||[];
+  const routes = rts.length ? `<div class="routes">${rts.map(r=>`<a href="${r.u}" target="_blank" rel="noopener">↗ ${esc(r.l)}</a>`).join("")}</div>` : "";
+  const tzline = day.tz ? `<div class="tzline">Times on this day are ${esc(day.tz)} time</div>` : "";
+  dayEl.innerHTML = `<article class="day" aria-live="polite"><div class="dayhead"><h2>${day.w} ${day.d} · ${esc(day.title)}</h2><p>${esc(day.sum)}</p>${tzline}<div class="tags">${day.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div>${routes}${check}</div><ol class="tl">${items}</ol></article>`;
+  const next = isToday ? day.items[nowIdx+1] : null;
+  if(next){ nextbar.innerHTML = `<b>Next</b>${next.t} · ${esc(next.h)}`; nextbar.classList.add("show"); }
+  else { nextbar.classList.remove("show"); nextbar.innerHTML=""; }
+  
+}
+DAYS.forEach(day=>{
+  const b=document.createElement("button");
+  b.type="button"; b.setAttribute("role","tab"); b.dataset.id=day.id;
+  if(day.date===sfNow().date) b.classList.add("today");
+  b.innerHTML=`<span class="w">${day.w}</span><span class="d">${day.d}</span>`;
+  b.addEventListener("click",()=>{ render(day.id); window.scrollTo({top:0}); });
+  daysEl.appendChild(b);
+});
+document.querySelectorAll("a[data-q]").forEach(a=>{ a.href=M(a.dataset.q); a.target="_blank"; a.rel="noopener"; });
+let start = (location.hash||"").slice(1);
+if(!DAYS.some(d=>d.id===start)){
+  start="mon";
+}
+render(start);
+setInterval(()=>{ const d=DAYS.find(x=>x.id===current); if(d && d.date===sfNow().date) render(current); }, 60000);
+</script>
+
+</body></html>
